@@ -32,5 +32,6 @@ public class StudentGradebook {
         courses.add(c3);
         
         gradebookFrame.setVisible(true);
+
     }
 }
