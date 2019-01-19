@@ -15,12 +15,12 @@ public class StudentGradebook {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         GradebookFrame gradebookFrame = new GradebookFrame();
         ClassFrame classFrame = new ClassFrame();
         ScheduleFrame scheduleFrame = new ScheduleFrame();
         PerformanceFrame performanceFrame = new PerformanceFrame();
-       
+        
         gradebookFrame.setVisible(true);
     }
-    
 }
