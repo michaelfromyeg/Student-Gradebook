@@ -31,7 +31,7 @@ public class GradebookFrame extends javax.swing.JFrame {
         classButton = new javax.swing.JButton();
         scheduleButton = new javax.swing.JButton();
         performanceButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        quoteLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,8 +52,8 @@ public class GradebookFrame extends javax.swing.JFrame {
 
         performanceButton.setText("View Performance");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Motivational Quote");
+        quoteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        quoteLabel.setText("Motivational Quote");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Time");
@@ -67,7 +67,7 @@ public class GradebookFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(quoteLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
@@ -91,7 +91,7 @@ public class GradebookFrame extends javax.swing.JFrame {
                     .addComponent(scheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(performanceButton))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(quoteLabel)
                 .addContainerGap())
         );
 
@@ -140,9 +140,9 @@ public class GradebookFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton classButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton performanceButton;
+    private javax.swing.JLabel quoteLabel;
     private javax.swing.JButton scheduleButton;
     // End of variables declaration//GEN-END:variables
 }
