@@ -10,10 +10,14 @@ package studentgradebook;
  * @author rajan
  */
 public class GradebookFrame extends javax.swing.JFrame {
+
+    final String[] quotes;
+    
     /**
      * Creates new form GradebookFrame
      */
     public GradebookFrame() {
+        this.quotes = new String[]{"\"Don't let what you cannot do interfere with what you can do.\" -John Wooden", "\"Successful and unsuccessful people do not vary greatly in their abilities. They vary in their desires to reach their potential.\" -John Maxwell", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin again more intelligently.\" -Henry Ford", "\"Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.\" -Thomas A. Edison", "\"You've got to get up every morning with determination if you're going to go to bed with satisfaction.\" �George Lorimer", "\"Start where you are. Use what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do the common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish you were better.\" -Jim Rohn"};
         initComponents();
     }
 
@@ -67,7 +71,7 @@ public class GradebookFrame extends javax.swing.JFrame {
         });
 
         quoteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        quoteLabel.setText("Motivational Quote");
+        quoteLabel.setText(quotes[(int)Math.floor(Math.random()*quotes.length)]);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Time");
@@ -132,6 +136,7 @@ public class GradebookFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
