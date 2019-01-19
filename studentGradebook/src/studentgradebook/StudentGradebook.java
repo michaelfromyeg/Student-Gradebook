@@ -28,6 +28,16 @@ public class StudentGradebook {
 
     public static void main(String[] args) {
         StudentGradebook begin = new StudentGradebook();
+        
+        ArrayList<Course> courses = new ArrayList<Course>();
+        Course c1 = new Course("Math","Room 123","Mr. Artym");
+        Course c2 = new Course("History","Room 546","Mrs. Usher");
+        Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
+        
+        courses.add(c1);
+        courses.add(c2);
+        courses.add(c3);
+        
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
@@ -67,7 +77,7 @@ public class StudentGradebook {
          gradebook.setVisible(false);
       }
    }
-*/
+    */
 
  }
 
