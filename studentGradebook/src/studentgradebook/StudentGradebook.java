@@ -7,7 +7,7 @@ package studentgradebook;
 
 /**
  *
- * @author rajan
+ * @author Michael DeMarco, Jordan Van Den Bruel, and Rajan Maghera
  */
 public class StudentGradebook {
 
