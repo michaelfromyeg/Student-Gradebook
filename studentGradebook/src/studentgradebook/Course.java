@@ -40,4 +40,43 @@ public class Course {
 		this.teacher = newTeacher;
 	}
 	
+        public void addTest(Test test) {
+            tests.add(test);
+        }
+        
+        public void deleteTest(Test test) {
+            int index = tests.indexOf(test);
+                if (index == -1) {
+                    System.out.print("Test not found!");
+                }
+                else {
+                    tests.remove(index);
+                }
+        }
+        
+        public void addAssignment(Assignment assign) {
+            assignments.add(assign);
+        }
+        
+        public void deleteAssignment(Assignment assign) {
+            int index = assignments.indexOf(assign);
+                if (index == -1) {
+                    System.out.print("Assignment not found!");
+                }
+                else {
+                    assignments.remove(index);
+                }
+        }
+        
+        public double classAverage(ArrayList tests, ArrayList assignments) {
+            for(int i = 0; i < tests.size(); i++) {
+                System.out.print(tests.get(i));
+            }
+            return 0;
+        }
+        
+        @Override
+        public String toString() {
+            return "This course is called:" + this.getCourseName();
+        }
 }
