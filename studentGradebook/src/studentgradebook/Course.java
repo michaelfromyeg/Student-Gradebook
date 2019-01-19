@@ -7,13 +7,15 @@ public class Course {
 	private String courseName;
 	private String location;
 	private String teacher;
-	public ArrayList<Test> tests = new ArrayList<Test>();
-	public ArrayList<Assignment> assignments = new ArrayList<Assignment>();
+	private static ArrayList<Test> tests = new ArrayList<Test>();
+	private static ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 	
 	public Course(String courseName, String location, String teacher) {
-		this.courseName = courseName;
-		this.location = location;
-		this.teacher = teacher;
+            this.courseName = courseName;
+            this.location = location;
+            this.teacher = teacher;
+            Course.tests = new ArrayList<>();
+            Course.assignments = new ArrayList<>();
 	}
 	
 	public String getCourseName() {
@@ -70,7 +72,11 @@ public class Course {
         
         public double classAverage(ArrayList tests, ArrayList assignments) {
             for(int i = 0; i < tests.size(); i++) {
-                System.out.print(tests.get(i));
+                this.tests.get(i).getTestWeighting();
+            }
+            
+            for(int i = 0; i < tests.size(); i++) {
+                this.tests.get(i).getTestWeighting();
             }
             return 0;
         }
