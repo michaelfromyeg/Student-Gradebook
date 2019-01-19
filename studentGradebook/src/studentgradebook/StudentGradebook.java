@@ -1,26 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package studentgradebook;
 
-/**
- *
- * @author Michael DeMarco, Jordan Van Den Bruel, and Rajan Maghera
- */
-public class StudentGradebook {
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-    /**
-     * @param args the command line arguments
-     */
+public class StudentGradebook {
+    public static GradebookFrame gradebook;
+    private static ClassFrame classFrame;
+    private static ScheduleFrame scheduleFrame;
+    private static PerformanceFrame performanceFrame;
+    
+    public StudentGradebook() {
+        gradebook = new GradebookFrame();
+        classFrame = new ClassFrame();
+        scheduleFrame = new ScheduleFrame();
+        performanceFrame = new PerformanceFrame();
+        
+        gradebook.setVisible(true);
+    }
+
     public static void main(String[] args) {
-        GradebookFrame gradebookFrame = new GradebookFrame();
-        ClassFrame classFrame = new ClassFrame();
-        ScheduleFrame scheduleFrame = new ScheduleFrame();
-        PerformanceFrame performanceFrame = new PerformanceFrame();
-       
-        gradebookFrame.setVisible(true);
+        StudentGradebook begin = new StudentGradebook();
+        gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classFrame.setVisible(true);
+            }
+        });
     }
     
+    /*
+       class ClassButtonListener implements MouseListener {
+      public void mouseClicked(MouseEvent e) {
+         classFrame.setVisible(true);
+         gradebook.setVisible(false);
+      }
+   }
+*/
+
+
+    
 }
+
