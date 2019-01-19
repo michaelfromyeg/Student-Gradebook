@@ -26,23 +26,29 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="titleLabel" pref="280" max="32767" attributes="0"/>
+                  <Component id="titleLabel" max="32767" attributes="0"/>
+                  <Component id="nameField" max="32767" attributes="0"/>
+                  <Component id="courseBox" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="addButton" min="-2" pref="121" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="nameField" max="32767" attributes="0"/>
-                  <Component id="courseBox" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="courseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="scoreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="weightField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Component id="weightLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="scoreField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Component id="dateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="dateField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="weightField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="weightLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="scoreLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="scoreField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="146" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -63,6 +69,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="courseBox" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="dateLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="dateField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="scoreLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="scoreField" min="-2" max="-2" attributes="0"/>
@@ -70,7 +80,7 @@
               <Component id="weightLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="weightField" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
               <Component id="addButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -135,6 +145,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="dateLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Date"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="dateField">
     </Component>
   </SubComponents>
 </Form>
