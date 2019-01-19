@@ -109,6 +109,7 @@ public class AddCourse extends javax.swing.JFrame {
         
         Course course = new Course(courseName, courseLocation, courseTeacher);
         
+       
     }//GEN-LAST:event_addButtonActionPerformed
 
     /**
