@@ -22,5 +22,6 @@ public class StudentGradebook {
         PerformanceFrame performanceFrame = new PerformanceFrame();
         
         gradebookFrame.setVisible(true);
+
     }
 }
