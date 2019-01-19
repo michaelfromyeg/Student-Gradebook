@@ -70,15 +70,56 @@ public class Course {
                 }
         }
         
-        public double classAverage(ArrayList tests, ArrayList assignments) {
-            for(int i = 0; i < tests.size(); i++) {
-                this.tests.get(i).getTestWeighting();
-            }
+        public double weightSum() {
+            
+            double weightSum = 0.0;
             
             for(int i = 0; i < tests.size(); i++) {
-                this.tests.get(i).getTestWeighting();
+                weightSum += this.tests.get(i).getTestWeighting() / 100;
             }
-            return 0;
+            
+            for(int i = 0; i < assignments.size(); i++) {
+                weightSum += this.assignments.get(i).getAssignWeighting() / 100;
+            }
+            
+            return weightSum;
+        }
+        
+        public double weightSumTests() {
+            
+            double weightSum = 0.0;
+            
+            for(int i = 0; i < tests.size(); i++) {
+                weightSum += this.tests.get(i).getTestWeighting() / 100;
+            }
+            
+            return weightSum;
+        }
+        
+        public double weightSumAssignments() {
+            
+            double weightSum = 0.0;
+            
+            for(int i = 0; i < assignments.size(); i++) {
+                weightSum += this.assignments.get(i).getAssignWeighting() / 100;
+            }
+            
+            return weightSum;
+        }
+        
+        public double classAverage(ArrayList tests, ArrayList assignments) {
+            
+            double weightedAvg = 0.0;
+            
+            for(int i = 0; i < tests.size(); i++) {
+                weightedAvg += (this.tests.get(i).getTestWeighting() / 100) * this.tests.get(i).getTestScore();
+            }
+            
+            for(int i = 0; i < assignments.size(); i++) {
+                weightedAvg += (this.assignments.get(i).getAssignWeighting() / 100) * this.assignments.get(i).getAssignScore();
+            }
+            
+            return weightedAvg / this.weightSum();
         }
         
         @Override
