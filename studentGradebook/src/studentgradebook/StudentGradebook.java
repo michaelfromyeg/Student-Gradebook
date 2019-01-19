@@ -6,6 +6,8 @@
 package studentgradebook;
 
 import java.util.ArrayList;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -17,6 +19,13 @@ public class StudentGradebook {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
+        try { 
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } 
+        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         
         GradebookFrame gradebookFrame = new GradebookFrame();
         ClassFrame classFrame = new ClassFrame();

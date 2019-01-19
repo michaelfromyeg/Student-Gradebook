@@ -19,27 +19,27 @@ public class Course {
 	}
 	
 	public String getCourseName() {
-		return this.courseName;
+            return this.courseName;
 	}
 	
 	public void setCourseName(String newCourseName) {
-		this.courseName = newCourseName;
+            this.courseName = newCourseName;
 	}
 	
 	public String getLocation() {
-		return this.location;
+            return this.location;
 	}
 	
 	public void setLocation(String newLocation) {
-		this.location = newLocation;
+            this.location = newLocation;
 	}
 
 	public String getTeacher() {
-		return this.teacher;
+            return this.teacher;
 	}
 	
 	public void setTeacher(String newTeacher) {
-		this.teacher = newTeacher;
+            this.teacher = newTeacher;
 	}
 	
         public void addTest(Test test) {
