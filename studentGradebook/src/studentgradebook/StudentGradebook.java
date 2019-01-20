@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -37,6 +38,13 @@ public class StudentGradebook {
     public static String[][] testArray;
     public static String[][] marksArray;
     public static String[] courseList;
+    
+    
+    public static String  filename = "logo.png";
+    public static String  workingDir = System.getProperty("user.dir");
+    public static String  filepath = workingDir + File.separator + "\\src\\studentgradebook\\" + filename;
+    
+    public static ImageIcon img = new ImageIcon(filepath);
      
     public StudentGradebook() {
         gradebook = new GradebookFrame();
@@ -55,6 +63,13 @@ public class StudentGradebook {
         StudentGradebook begin = new StudentGradebook();
         System.out.println(courses.size());
         initialImport();
+        gradebook.setIconImage(img.getImage());
+        classFrame.setIconImage(img.getImage());
+        performanceFrame.setIconImage(img.getImage());
+        addCourse.setIconImage(img.getImage());
+        addTest.setIconImage(img.getImage());
+        classView.setIconImage(img.getImage());
+        calculatorForm.setIconImage(img.getImage());
         
         //gradebookFrame --> classFrame
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
