@@ -129,6 +129,7 @@ public class StudentGradebook implements java.io.Serializable {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classView.setVisible(true);
                 classView.toFront();
+                classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0);
                 classFrame.setVisible(false);
             }
         });

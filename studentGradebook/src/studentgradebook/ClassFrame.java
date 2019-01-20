@@ -208,7 +208,7 @@ public class ClassFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton addClassButton;
     public javax.swing.JButton backButton;
-    private javax.swing.JTable classTable;
+    public javax.swing.JTable classTable;
     public javax.swing.JButton importClassButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
