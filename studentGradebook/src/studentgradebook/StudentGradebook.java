@@ -24,7 +24,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class StudentGradebook implements java.io.Serializable {
     public static GradebookFrame gradebook;
     private static ClassFrame classFrame;
-    private static ScheduleFrame scheduleFrame;
     private static PerformanceFrame performanceFrame;
     public static ArrayList<Course> courses = new ArrayList<Course>();
     public static int coursesNum;
@@ -51,24 +50,18 @@ public class StudentGradebook implements java.io.Serializable {
     public StudentGradebook() {
         gradebook = new GradebookFrame();
         classFrame = new ClassFrame();
-        scheduleFrame = new ScheduleFrame();
         performanceFrame = new PerformanceFrame();
         addCourse = new AddCourse();
         addAssignment = new AddAssignment();
         addTest = new AddTest();
         classView = new ClassView();
-        
         gradebook.setVisible(true);
     }
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
         
         UIManager.setLookAndFeel ( new WebLookAndFeel () );
-        
         StudentGradebook begin = new StudentGradebook();
-        
-
-             
         System.out.println(courses.size());
         
         //gradebookFrame --> classFrame
@@ -76,13 +69,6 @@ public class StudentGradebook implements java.io.Serializable {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
-            }
-        });
-        //gradebookFrame --> scheduleFrame
-        gradebook.scheduleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                scheduleFrame.setVisible(true);
-                scheduleFrame.toFront();
             }
         });
         //gradebookFrame --> performanceFrame
@@ -106,13 +92,6 @@ public class StudentGradebook implements java.io.Serializable {
                 gradebook.toFront();
             }
         });
-        //back button on scheduleFrame --> gradebookFrame
-        scheduleFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                gradebook.setVisible(true);
-                gradebook.toFront();
-            }
-        }); 
         classFrame.addClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addCourse.setVisible(true);
@@ -232,6 +211,15 @@ public class StudentGradebook implements java.io.Serializable {
           } catch (IOException ex) {
                   ex.printStackTrace();
           }
-}
+    }
     
+    public static double studentAverage() {
+        
+        double sum = 0.0;
+        for (int i = 0; i < courses.size(); i++) {
+            sum += courses.get(i).classAverage();
+        }
+        return sum / courses.size();
+    }
+  
  }

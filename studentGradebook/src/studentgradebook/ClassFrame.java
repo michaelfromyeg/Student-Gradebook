@@ -92,7 +92,7 @@ public class ClassFrame extends javax.swing.JFrame {
         classTable.setModel(model);
         jScrollPane1.setViewportView(classTable);
 
-        viewClassButton.setText("View Class");
+        viewClassButton.setText("View A Class");
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
