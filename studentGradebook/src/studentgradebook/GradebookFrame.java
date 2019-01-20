@@ -23,6 +23,7 @@ public class GradebookFrame extends javax.swing.JFrame {
     public GradebookFrame() {
         this.quotes = new String[]{"\"Don't let what you cannot do interfere \nwith what you can do.\" -John Wooden", "\"Successful and unsuccessful people do not vary \ngreatly in their abilities. They vary in their desires to\n reach their potential.\" -John Maxwell", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin \nagain more intelligently.\" -Henry Ford", "\"Our greatest weakness lies in giving up.\nThe most certain way to succeed is \nalways to try just one more time.\" -Thomas A. Edison", "\"You've got to get up every morning with determination \nif you're going to go to bed with satisfaction.\" -George Lorimer", "\"Start where you are. \nUse what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do \nthe common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish \nyou were better.\" -Jim Rohn"};
         initComponents();
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -181,7 +182,7 @@ public class GradebookFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel averageLabel;
+    public javax.swing.JLabel averageLabel;
     public javax.swing.JButton classButton;
     private javax.swing.JLabel datetimeLabel;
     private javax.swing.JDialog jDialog1;

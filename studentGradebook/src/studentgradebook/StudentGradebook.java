@@ -49,6 +49,7 @@ public class StudentGradebook {
         classView = new ClassView();
         calculatorForm = new CalculatorForm();
         gradebook.setVisible(true);
+
     }
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
@@ -77,6 +78,7 @@ public class StudentGradebook {
                 classFrame.setVisible(false);
                 gradebook.setVisible(true);
                 gradebook.toFront();
+                gradebook.averageLabel.setText("Current Average: " + StudentGradebook.studentAverage());
             }
         });
         //back button on performanceFrame --> gradebookFrame
@@ -84,6 +86,7 @@ public class StudentGradebook {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
+                gradebook.averageLabel.setText("Current Average: " + StudentGradebook.studentAverage());
             }
         });
         classFrame.addClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,6 +117,11 @@ public class StudentGradebook {
                 calculatorForm.setVisible(true);
                 calculatorForm.toFront();
                 performanceFrame.setVisible(false);
+                calculatorForm.classSelector.removeAllItems();
+                for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
+                    calculatorForm.classSelector.addItem(StudentGradebook.courses.get(i).getCourseName());
+                }
+                calculatorForm.initMarks();
             }
         });
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {

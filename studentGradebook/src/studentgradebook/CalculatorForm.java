@@ -22,18 +22,13 @@ public class CalculatorForm extends javax.swing.JFrame {
 
     
     public void initMarks() {
+        if (StudentGradebook.courses.isEmpty()) { 
+        } else{
+        course = StudentGradebook.courses.get(classSelector.getSelectedIndex());
         
-        course = new Course("History", "221", "Usher");
         
-        Test test1 = new Test("Napoleon", 90, 1);
-        Test test2 = new Test("French Rev", 80, 1);
         
-        course.addTest(test1);
-        course.addTest(test2);
-        
-
- 
-    }
+    }}
    
 
     public CalculatorForm() {
@@ -57,7 +52,7 @@ public class CalculatorForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        classSelector = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -86,10 +81,15 @@ public class CalculatorForm extends javax.swing.JFrame {
 
         jLabel2.setText("Weight");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "History", "French" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        classSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        classSelector.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                classSelectorItemStateChanged(evt);
+            }
+        });
+        classSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                classSelectorActionPerformed(evt);
             }
         });
 
@@ -98,12 +98,12 @@ public class CalculatorForm extends javax.swing.JFrame {
         jLabel4.setText("Current Mark");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel5.setText("74");
+        jLabel5.setText("0");
 
         jLabel6.setText("Updated Mark");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel7.setText("78");
+        jLabel7.setText("0");
 
         backButton.setText("Back");
 
@@ -114,7 +114,7 @@ public class CalculatorForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(classSelector, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -157,7 +157,7 @@ public class CalculatorForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1)
+                .addComponent(classSelector)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -191,6 +191,7 @@ public class CalculatorForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+
         jTextField1.setText(Integer.toString(jSlider1.getValue()));        
         
         jLabel5.setText(Integer.toString((int) Math.round(course.classAverage())));
@@ -202,9 +203,13 @@ public class CalculatorForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextField1PropertyChange
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void classSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classSelectorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_classSelectorActionPerformed
+
+    private void classSelectorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_classSelectorItemStateChanged
+        initMarks();
+    }//GEN-LAST:event_classSelectorItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -243,7 +248,7 @@ public class CalculatorForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton backButton;
-    private javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> classSelector;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
