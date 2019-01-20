@@ -20,11 +20,12 @@ public class ClassFrame extends javax.swing.JFrame {
     /**
      * Creates new form GradebookFrame
      */
-   DefaultTableModel model = new DefaultTableModel();
-    
+    DefaultTableModel model = new DefaultTableModel() {
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     public void setupTable() {
-        
-
         StudentGradebook.updateArray();
         String[] colNames = {"Name", "Location", "Teacher"};
         model.setDataVector(StudentGradebook.courseArray, colNames);
@@ -89,6 +90,7 @@ public class ClassFrame extends javax.swing.JFrame {
             }
         });
 
+        classTable.setAutoCreateRowSorter(true);
         classTable.setModel(model);
         jScrollPane1.setViewportView(classTable);
 

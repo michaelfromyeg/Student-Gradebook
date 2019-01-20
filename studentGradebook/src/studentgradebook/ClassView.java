@@ -6,9 +6,12 @@
 package studentgradebook;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +22,37 @@ public class ClassView extends javax.swing.JFrame {
     /**
      * Creates new form GradebookFrame
      */
+    
+    Course current = new Course("sjkl", "sjkl", "sd"); // Replace with " = StudentGradebook.courses.get(i);
+     
+    DefaultTableModel model = new DefaultTableModel() {
+     public boolean isCellEditable(int row, int column)
+    {
+      return false;//This causes all cells to be not editable
+    }   
+    
+    };
+    String[][] testArray;
+    
+        public void setupTable() {
+        
+
+        StudentGradebook.updateArray();
+        testArray = new String[current.tests.size()][4];
+        for (int i = 0; i < current.tests.size(); i ++) {
+         testArray[i][0] = current.tests.get(i).getTestName();
+         testArray[i][1] = new SimpleDateFormat("yyyy/MM/dd").format(current.tests.get(i).getDate());     
+         testArray[i][2] = Double.toString(current.tests.get(i).getTestScore());
+         testArray[i][3] = Double.toString(current.tests.get(i).getTestWeighting());
+        }
+        
+        String[] colNames = {"Name", "Date", "Score", "Weight"};
+        model.setDataVector(testArray, colNames);
+}
+    
     public ClassView() {
         initComponents();
+        setupTable();
         this.setLocationRelativeTo(null);        
     }
 
@@ -33,17 +65,17 @@ public class ClassView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        testsLabel = new javax.swing.JLabel();
+        classesLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        classTable = new javax.swing.JTable();
+        testTable = new javax.swing.JTable();
         addTest = new javax.swing.JButton();
         editTestButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        testsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        testsLabel.setText("Tests");
+        classesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        classesLabel.setText("Classes");
 
         backButton.setText("Back");
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -52,7 +84,8 @@ public class ClassView extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(classTable);
+        testTable.setModel(model);
+        jScrollPane1.setViewportView(testTable);
 
         addTest.setText("Add Test");
         addTest.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +104,7 @@ public class ClassView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(testsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(classesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +122,7 @@ public class ClassView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(testsLabel)
+                .addComponent(classesLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
@@ -153,8 +186,10 @@ public class ClassView extends javax.swing.JFrame {
     public javax.swing.JButton addTest;
     public javax.swing.JButton backButton;
     private javax.swing.JTable classTable;
+    public javax.swing.JLabel classesLabel;
     public javax.swing.JButton editTestButton;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable testTable;
     public javax.swing.JLabel testsLabel;
     // End of variables declaration//GEN-END:variables
 }
