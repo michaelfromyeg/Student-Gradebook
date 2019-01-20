@@ -38,6 +38,7 @@ public class StudentGradebook {
     public static String[][] courseArray;
     public static String[][] testArray;
     public static String[][] marksArray;
+    public static String[] courseList;
      
     public StudentGradebook() {
         gradebook = new GradebookFrame();
@@ -232,10 +233,10 @@ public class StudentGradebook {
         for (int i = 0; i < courses.size(); i ++) {
             marksArray[i][0] = courses.get(i).getCourseName();
             marksArray[i][1] = Double.toString(courses.get(i).classAverage());
-        }        
+            
+        }
     }
-    
-    
+  
     public static void updateArrayTests() {
         testArray = new String[courseChoice.tests.size()][3];
         for (int i = 0; i < courseChoice.tests.size(); i ++) {
@@ -243,6 +244,14 @@ public class StudentGradebook {
             testArray[i][1] = courseChoice.tests.get(i).getTestScore() + "";     
             testArray[i][2] = courseChoice.tests.get(i).getTestWeighting() + "";      
         }
+    }
+    
+    public static void updateArrayCourseList() {
+        courseList = new String[courses.size()];
+        for (int i = 0; i < courses.size(); i ++) {
+            courseList[i] = courses.get(i).getCourseName();
+        }    
+        
     }
     
     public static void importCourse(File file) throws ClassNotFoundException {

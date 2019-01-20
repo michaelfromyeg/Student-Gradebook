@@ -75,6 +75,17 @@ public class Course implements java.io.Serializable {
             return weightSum;
         }
         
+        public double classAverage(double mark, double weight) { // Method for one extra mark
+            double weightedAvg = 0.0;
+            
+            for(int i = 0; i < tests.size(); i++) {
+                weightedAvg += (this.tests.get(i).getTestWeighting() / 100) * this.tests.get(i).getTestScore();
+            }
+            System.out.println(weightedAvg);
+            return (weightedAvg + ((weight / 100) * mark)) / (this.weightSum() + (weight / 100));
+            
+        }
+        
         public double classAverage() {     
             double weightedAvg = 0.0;
             
