@@ -26,29 +26,23 @@ public class ClassView extends javax.swing.JFrame {
     public static Course current = new Course("sjkl", "sjkl", "sd"); // Replace with " = StudentGradebook.courses.get(i);
      
     DefaultTableModel model = new DefaultTableModel() {
-     public boolean isCellEditable(int row, int column)
-    {
-      return false;//This causes all cells to be not editable
-    }   
-    
+        public boolean isCellEditable(int row, int column) {
+            return false;//This causes all cells to be not editable
+        }
     };
-    String[][] testArray;
-    
-        public void setupTable() {
-        
-
+    String[][] testArray;  
+    public void setupTable() {
         StudentGradebook.updateArray();
         testArray = new String[current.tests.size()][4];
         for (int i = 0; i < current.tests.size(); i ++) {
-         testArray[i][0] = current.tests.get(i).getTestName();
-         testArray[i][1] = new SimpleDateFormat("yyyy/MM/dd").format(current.tests.get(i).getDate());     
-         testArray[i][2] = Double.toString(current.tests.get(i).getTestScore());
-         testArray[i][3] = Double.toString(current.tests.get(i).getTestWeighting());
+            testArray[i][0] = current.tests.get(i).getTestName();
+            testArray[i][1] = new SimpleDateFormat("yyyy/MM/dd").format(current.tests.get(i).getDate());     
+            testArray[i][2] = Double.toString(current.tests.get(i).getTestScore());
+            testArray[i][3] = Double.toString(current.tests.get(i).getTestWeighting());
         }
-        
         String[] colNames = {"Name", "Date", "Score", "Weight"};
         model.setDataVector(testArray, colNames);
-}
+    }       
     
     public ClassView() {
         initComponents();
