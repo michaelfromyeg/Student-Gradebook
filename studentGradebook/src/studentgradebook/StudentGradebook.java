@@ -4,12 +4,16 @@ import com.alee.laf.WebLookAndFeel;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -49,6 +53,7 @@ public class StudentGradebook {
         
         
     }
+    private static ClassView classView;
     
     public StudentGradebook() {
         gradebook = new GradebookFrame();
@@ -58,6 +63,7 @@ public class StudentGradebook {
         addCourse = new AddCourse();
         addAssignment = new AddAssignment();
         addTest = new AddTest();
+        classView = new ClassView();
         
         gradebook.setVisible(true);
     }
@@ -68,6 +74,25 @@ public class StudentGradebook {
         
         StudentGradebook begin = new StudentGradebook();
         
+        Course c1 = new Course("Math","Room 123","Mr. Artym");
+        Course c2 = new Course("History","Room 546","Mrs. Usher");
+        Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
+        
+        courses.add(c1);
+        courses.add(c2);
+        courses.add(c3);
+        
+
+        courseArray = new String[3][courses.size()];
+        for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
+          courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
+         courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
+         courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
+}
+             
+        System.out.println(courses.size());
+        
+        //gradebookFrame --> classFrame
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
@@ -139,36 +164,76 @@ public class StudentGradebook {
         //add button on AddCourse
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+//thinger here
                 courses.add(new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText()));
-                
+                Course c = new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText());
+                courses.add(c);
+                System.out.print(c);
+                //saveCourse(c);
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
-        });        
+        });
+        //backButton in ClassView --> ClassFrame
+        classView.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classFrame.setVisible(true);
+                classFrame.toFront();
+            }
+        });
+        //viewClass button in classFrame --> ClassViewFrame
+        classFrame.viewClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classView.setVisible(true);
+                classView.toFront();
+            }
+        });
+        
+        classFrame.importClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                final JFileChooser fc = new JFileChooser();
+                int returnVal = fc.showOpenDialog(null);
+
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fc.getSelectedFile();
+                    try {
+                        importCourse(file);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.out.println("Opening: " + file.getName() + ".");
+                } else {
+                    System.out.println("Open command cancelled by user.");
+                }
+            }
+            });
     }
     
     public static void importCourse(File file) throws ClassNotFoundException {
-        
         Course c = null;
-        
         try {
          FileInputStream fileIn = new FileInputStream(file);
          ObjectInputStream in = new ObjectInputStream(fileIn);
          c = (Course) in.readObject();
+         courses.add(c);
          in.close();
          fileIn.close();
-      } catch (IOException e) {
-         e.printStackTrace();
-      }
+        } catch (IOException e) {
+           e.printStackTrace();
+        }
     }
     
-    /*
-       class ClassButtonListener implements MouseListener {
-      public void mouseClicked(MouseEvent e) {
-         classFrame.setVisible(true);
-         gradebook.setVisible(false);
-      }
-   }
-    */
-
+    public static void saveCourse(Course course) {
+        try {
+            FileOutputStream fileOut =
+            new FileOutputStream("/tmp/" + course.getCourseName() + ".ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(course);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in /tmp/" + course.getCourseName() + ".ser");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
  }

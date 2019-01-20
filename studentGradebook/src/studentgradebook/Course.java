@@ -125,20 +125,6 @@ public class Course implements java.io.Serializable {
             return weightedAvg / this.weightSum();
         }
         
-        public void saveCourse() {
-            try {
-                FileOutputStream fileOut =
-                new FileOutputStream("/tmp/" + this.getCourseName() + ".ser");
-                ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                out.writeObject(this);
-                out.close();
-                fileOut.close();
-                System.out.printf("Serialized data is saved in /tmp/" + this.getCourseName() + ".ser");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        
         @Override
         public String toString() {
             return "This course is called:" + this.getCourseName();
