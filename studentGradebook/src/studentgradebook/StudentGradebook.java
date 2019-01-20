@@ -149,8 +149,8 @@ public class StudentGradebook implements java.io.Serializable {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Course c = new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText());
                 courses.add(c);
-                System.out.print(c.getCourseName());
-                //saveCourse(c);
+                System.out.println(c.getCourseName());
+                saveCourse(c);
                 classFrame.setVisible(true);
                 classFrame.toFront();
                 addCourse.nameField.setText("");
@@ -181,7 +181,11 @@ public class StudentGradebook implements java.io.Serializable {
 
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
                     File file = fc.getSelectedFile();
-                    //importCourse(file);
+                    try {
+                        importCourse(file);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     System.out.println("Opening: " + file.getName() + ".");
                 } else {
                     System.out.println("Open command cancelled by user.");
@@ -196,6 +200,7 @@ public class StudentGradebook implements java.io.Serializable {
          FileInputStream fileIn = new FileInputStream(file);
          ObjectInputStream in = new ObjectInputStream(fileIn);
          c = (Course) in.readObject();
+         System.out.println(c + "THIS WAS IMPORTED!");
          courses.add(c);
          in.close();
          fileIn.close();
@@ -205,13 +210,19 @@ public class StudentGradebook implements java.io.Serializable {
     }
     
     public static void saveCourse(Course course) {
-        String filepath="..\\tmp\\" + course.getCourseName();
+        
+        String filename = course.getCourseName() + ".ser";
+        String workingDir = System.getProperty("user.dir");
+        String filepath = workingDir+ File.separator + "\\src\\studentgradebook\\tmp\\" + filename;
+        System.out.println(filepath);
+        
+        //String filepath = "C:\\Users\\mdema\\Documents\\Github\\studentgradebook\\studentGradebook\\src\\studentgradebook\\tmp\\" + course.getCourseName() + ".ser";
         try {
               FileOutputStream fileOut = new FileOutputStream(filepath);
               ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
               objectOut.writeObject(course);
               objectOut.close();
-              System.out.println("The Object  was succesfully written to a file");
+              System.out.println("The object  was succesfully written to a file.");
           } catch (IOException ex) {
                   ex.printStackTrace();
           }
