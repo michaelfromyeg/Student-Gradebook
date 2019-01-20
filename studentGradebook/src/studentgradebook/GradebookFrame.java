@@ -36,15 +36,19 @@ public class GradebookFrame extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jDialog1 = new javax.swing.JDialog();
         classButton = new javax.swing.JButton();
-        scheduleButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         quoteLabel = new javax.swing.JLabel();
         performanceButton = new javax.swing.JButton();
         datetimeLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Student Gradebook");
+        setLocation(new java.awt.Point(0, 0));
         setMinimumSize(new java.awt.Dimension(1000, 750));
+        setPreferredSize(new java.awt.Dimension(1000, 750));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         classButton.setText("View Classes");
@@ -59,26 +63,6 @@ public class GradebookFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(35, 35, 35, 35);
         getContentPane().add(classButton, gridBagConstraints);
 
-        scheduleButton.setText("View Schedule");
-        scheduleButton.setAlignmentX(0.5F);
-        scheduleButton.setMaximumSize(new java.awt.Dimension(121, 23));
-        scheduleButton.setMinimumSize(new java.awt.Dimension(121, 23));
-        scheduleButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                scheduleButtonMouseClicked(evt);
-            }
-        });
-        scheduleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduleButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(35, 35, 35, 35);
-        getContentPane().add(scheduleButton, gridBagConstraints);
-
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Student Gradebook");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -92,7 +76,7 @@ public class GradebookFrame extends javax.swing.JFrame {
         quoteLabel.setText(quotes[(int)Math.floor(Math.random()*quotes.length)]);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
         getContentPane().add(quoteLabel, gridBagConstraints);
@@ -119,20 +103,20 @@ public class GradebookFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(14, 0, 14, 0);
         getContentPane().add(datetimeLabel, gridBagConstraints);
 
+        jLabel2.setText("Current Average: " + StudentGradebook.studentAverage());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(16, 0, 16, 0);
+        getContentPane().add(jLabel2, gridBagConstraints);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void classButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classButtonMouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_classButtonMouseClicked
-
-    private void scheduleButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleButtonMouseClicked
-        this.setVisible(false);
-    }//GEN-LAST:event_scheduleButtonMouseClicked
-
-    private void scheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_scheduleButtonActionPerformed
 
     private void performanceButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_performanceButtonMouseClicked
         this.setVisible(false);
@@ -177,9 +161,10 @@ public class GradebookFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton classButton;
     private javax.swing.JLabel datetimeLabel;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     public javax.swing.JButton performanceButton;
     private javax.swing.JLabel quoteLabel;
-    public javax.swing.JButton scheduleButton;
     // End of variables declaration//GEN-END:variables
 }

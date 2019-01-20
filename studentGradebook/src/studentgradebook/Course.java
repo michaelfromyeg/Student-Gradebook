@@ -110,7 +110,7 @@ public class Course implements java.io.Serializable {
             return weightSum;
         }
         
-        public double classAverage(ArrayList tests, ArrayList assignments) {
+        public double classAverage() {
             
             double weightedAvg = 0.0;
             
