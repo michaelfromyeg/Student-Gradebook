@@ -16,12 +16,14 @@ public class StudentGradebook {
     private static ClassFrame classFrame;
     private static ScheduleFrame scheduleFrame;
     private static PerformanceFrame performanceFrame;
+    private static AddCourse addCourse;
     
     public StudentGradebook() {
         gradebook = new GradebookFrame();
         classFrame = new ClassFrame();
         scheduleFrame = new ScheduleFrame();
         performanceFrame = new PerformanceFrame();
+        addCourse = new AddCourse();
         
         gradebook.setVisible(true);
     }
@@ -67,7 +69,17 @@ public class StudentGradebook {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
             }
-        });        
+        }); 
+        classFrame.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addCourse.setVisible(true);
+            }
+        });
+        addCourse.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classFrame.setVisible(true);
+            }
+        });
     }
     
     /*

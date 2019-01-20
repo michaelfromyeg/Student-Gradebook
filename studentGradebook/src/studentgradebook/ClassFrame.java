@@ -38,6 +38,11 @@ public class ClassFrame extends javax.swing.JFrame {
         jLabel1.setText("Classes");
 
         jButton1.setText("Add Class");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Open Class");
         jButton2.setMaximumSize(new java.awt.Dimension(121, 23));
@@ -87,6 +92,10 @@ public class ClassFrame extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -124,7 +133,7 @@ public class ClassFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
