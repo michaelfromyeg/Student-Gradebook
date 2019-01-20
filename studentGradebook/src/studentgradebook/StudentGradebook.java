@@ -175,6 +175,7 @@ public class StudentGradebook implements java.io.Serializable {
                 } else {
                     System.out.println("Open command cancelled by user.");
                 }
+                classFrame.refreshTable.doClick();
             }
             });
     }
