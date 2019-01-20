@@ -75,9 +75,6 @@ public class ClassFrame extends javax.swing.JFrame {
 
         classTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-        classTable.setModel(model);
-        classTable.setRowHeight(24);
-        jScrollPane1.setViewportView(classTable);
 
             },
             new String [] {
