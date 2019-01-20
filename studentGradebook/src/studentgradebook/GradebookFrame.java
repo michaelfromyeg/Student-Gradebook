@@ -46,8 +46,8 @@ public class GradebookFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Gradebook");
         setLocation(new java.awt.Point(0, 0));
-        setMinimumSize(new java.awt.Dimension(700, 400));
-        setPreferredSize(new java.awt.Dimension(700, 400));
+        setMinimumSize(new java.awt.Dimension(750, 400));
+        setPreferredSize(new java.awt.Dimension(750, 400));
 
         classButton.setText("View Classes");
         classButton.setAlignmentX(0.5F);
