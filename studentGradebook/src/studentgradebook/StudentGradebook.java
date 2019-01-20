@@ -34,11 +34,14 @@ public class StudentGradebook implements java.io.Serializable {
     private static ClassView classView;
     
     public static void updateArray() {
-        courseArray = new String[3][courses.size()];
+        courseArray = new String[courses.size()][3];
         for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
          courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
+         System.out.println(courseArray[i][0] + " ");
          courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
+         System.out.print(courseArray[i][1] + " ");         
          courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
+         System.out.print(courseArray[i][2] + " ");         
         }
     }
     
