@@ -5,8 +5,10 @@
  */
 package studentgradebook;
 
-import javax.swing.table.DefaultTableModel;
-import static studentgradebook.StudentGradebook.courseArray;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -36,9 +38,9 @@ public class ClassFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        addClassButton = new javax.swing.JButton();
+        openClassButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         classTable = new javax.swing.JTable();
 
@@ -47,21 +49,31 @@ public class ClassFrame extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Classes");
 
-        jButton1.setText("Add Class");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        addClassButton.setText("Add Class");
+        addClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                addClassButtonMouseClicked(evt);
+            }
+        });
+        addClassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addClassButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Open Class");
-        jButton2.setMaximumSize(new java.awt.Dimension(121, 23));
-        jButton2.setMinimumSize(new java.awt.Dimension(121, 23));
+        openClassButton.setText("Open Class");
+        openClassButton.setMaximumSize(new java.awt.Dimension(121, 23));
+        openClassButton.setMinimumSize(new java.awt.Dimension(121, 23));
+        openClassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openClassButtonActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Back");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        backButton.setText("Back");
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                backButtonMouseClicked(evt);
             }
         });
 
@@ -82,12 +94,12 @@ public class ClassFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
+                                .addComponent(backButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                                .addComponent(openClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 22, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -99,22 +111,43 @@ public class ClassFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(addClassButton)
+                    .addComponent(openClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton))
                 .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
         this.setVisible(false);
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_backButtonMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void addClassButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addClassButtonMouseClicked
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_addClassButtonMouseClicked
+
+    private void openClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openClassButtonActionPerformed
+
+        final JFileChooser fc = new JFileChooser();
+        int returnVal = fc.showOpenDialog(ClassFrame.this);
+        
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+           File file = fc.getSelectedFile();
+            try {
+                StudentGradebook.importCourse(file);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ClassFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+           System.out.print("Open command cancelled by user.");
+        }
+    }//GEN-LAST:event_openClassButtonActionPerformed
+
+    private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addClassButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,11 +186,11 @@ public class ClassFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton addClassButton;
+    public javax.swing.JButton backButton;
     private javax.swing.JTable classTable;
-    public javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton openClassButton;
     // End of variables declaration//GEN-END:variables
 }

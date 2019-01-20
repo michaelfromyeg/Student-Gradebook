@@ -49,7 +49,24 @@ public class AddCourse extends javax.swing.JFrame {
 
         teacherLabel.setText("Teacher");
 
+        nameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameFieldActionPerformed(evt);
+            }
+        });
+
+        locationField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locationFieldActionPerformed(evt);
+            }
+        });
+
         addButton.setText("Add ");
+        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addButtonMouseClicked(evt);
+            }
+        });
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
@@ -60,11 +77,6 @@ public class AddCourse extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -126,16 +138,32 @@ public class AddCourse extends javax.swing.JFrame {
         
         Course course = new Course(courseName, courseLocation, courseTeacher);
         
+        //courses.add
        
     }//GEN-LAST:event_addButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+        nameField.setText("");
+        locationField.setText("");
+        teacherField.setText("");
         this.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameFieldActionPerformed
+
+    private void locationFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_locationFieldActionPerformed
+
+    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+        nameField.setText("");
+        locationField.setText("");
+        teacherField.setText("");
+        this.setVisible(false);
+    }//GEN-LAST:event_addButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -176,13 +204,13 @@ public class AddCourse extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
+    public javax.swing.JButton addButton;
     public javax.swing.JButton jButton1;
-    private javax.swing.JTextField locationField;
+    public javax.swing.JTextField locationField;
     private javax.swing.JLabel locationLabel;
-    private javax.swing.JTextField nameField;
+    public javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JTextField teacherField;
+    public javax.swing.JTextField teacherField;
     private javax.swing.JLabel teacherLabel;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables

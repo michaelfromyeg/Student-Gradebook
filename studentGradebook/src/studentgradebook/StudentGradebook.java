@@ -1,8 +1,11 @@
 package studentgradebook;
 
 import com.alee.laf.WebLookAndFeel;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -64,73 +67,98 @@ public class StudentGradebook {
         
         StudentGradebook begin = new StudentGradebook();
         
-
-
-         
-        
-        
-
- 
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
         });
+        //gradebookFrame --> scheduleFrame
         gradebook.scheduleButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 scheduleFrame.setVisible(true);
                 scheduleFrame.toFront();
             }
         });
+        //gradebookFrame --> performanceFrame
         gradebook.performanceButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 performanceFrame.setVisible(true);
                 performanceFrame.toFront();
             }
         });
-        classFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+
+        classFrame.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
             }
         });
+        //back button on performanceFrame --> gradebookFrame
         performanceFrame.jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
             }
         });
+        //back button on scheduleFrame --> gradebookFrame
         scheduleFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
             }
         }); 
-        classFrame.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        classFrame.addClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addCourse.setVisible(true);
                 gradebook.toFront();
             }
         });
+        //cancel button on addCourse --> classFrame
         addCourse.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
         });
+        //cancel button on addAssignment --> classFrame
         addAssignment.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
         });
+        //cancel button on addTest --> classFrame
         addTest.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
-        });          
+        });
+        //add button on AddCourse
+        addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                courses.add(new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText()));
+                
+                classFrame.setVisible(true);
+                classFrame.toFront();
+            }
+        });        
+    }
+    
+    public static void importCourse(File file) throws ClassNotFoundException {
+        
+        Course c = null;
+        
+        try {
+         FileInputStream fileIn = new FileInputStream(file);
+         ObjectInputStream in = new ObjectInputStream(fileIn);
+         c = (Course) in.readObject();
+         in.close();
+         fileIn.close();
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
     }
     
     /*
@@ -143,4 +171,3 @@ public class StudentGradebook {
     */
 
  }
-
