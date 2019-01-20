@@ -27,6 +27,7 @@ public class StudentGradebook {
     private static AddCourse addCourse;
     private static AddAssignment addAssignment;
     private static AddTest addTest;
+    private static ClassView classView;
     
     public static void createDatabase() {
         
@@ -57,6 +58,7 @@ public class StudentGradebook {
         addCourse = new AddCourse();
         addAssignment = new AddAssignment();
         addTest = new AddTest();
+        classView = new ClassView();
         
         gradebook.setVisible(true);
     }
@@ -139,11 +141,24 @@ public class StudentGradebook {
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 courses.add(new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText()));
-                
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
-        });        
+        });
+        //backButton in ClassView --> ClassFrame
+        classView.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classFrame.setVisible(true);
+                classFrame.toFront();
+            }
+        });
+        //viewClass button in classFrame --> ClassViewFrame
+        classFrame.viewClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classView.setVisible(true);
+                classView.toFront();
+            }
+        });
     }
     
     public static void importCourse(File file) throws ClassNotFoundException {
