@@ -27,18 +27,12 @@ public class CalculatorForm extends javax.swing.JFrame {
         
         course = new Course("History", "221", "Usher");
         
-        Test test1 = new Test("Napoleon", 90, 1, course, new Date());
-        Test test2 = new Test("French Rev", 80, 1, course, new Date());
+        Test test1 = new Test("Napoleon", 90, 100, course, new Date());
+        Test test2 = new Test("French Rev", 80, 100, course, new Date());
         
         course.addTest(test1);
         course.addTest(test2);
         
-                
-        total = 0;
-        for (int i = 0; i < course.getTestNum(); i ++ ) {
-        total = total +  course.getTest(i).getTestScore() * course.getTest(i).getTestWeighting();   
-        }
-        currentAverage = total / course.getTestNum();
 
  
     }
@@ -90,9 +84,16 @@ public class CalculatorForm extends javax.swing.JFrame {
 
         jLabel1.setText("Future Test");
 
+        jTextField2.setText("100");
+
         jLabel2.setText("Weight");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "History", "French" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Course");
 
@@ -158,7 +159,7 @@ public class CalculatorForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                .addComponent(jComboBox1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -192,15 +193,20 @@ public class CalculatorForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        jTextField1.setText(Integer.toString(jSlider1.getValue()));          
-        jLabel5.setText(Integer.toString((int) Math.round(currentAverage)));
-        jLabel7.setText(Integer.toString((int) Math.round((total + jSlider1.getValue()) / (course.getTestNum() + 1))));     
+        jTextField1.setText(Integer.toString(jSlider1.getValue()));        
+        
+        jLabel5.setText(Integer.toString((int) Math.round(course.classAverage())));
+        jLabel7.setText(Integer.toString((int) Math.round(course.classAverage(jSlider1.getValue(), Double.parseDouble(jTextField2.getText())))));     
         
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void jTextField1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextField1PropertyChange
 
     }//GEN-LAST:event_jTextField1PropertyChange
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
