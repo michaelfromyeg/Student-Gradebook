@@ -13,7 +13,7 @@ public class AddCourse extends javax.swing.JFrame {
 
     /**
      * Creates new form GradebookFrame
-     */
+     */    
     public AddCourse() {
         initComponents();
         this.setLocationRelativeTo(null);        
@@ -132,14 +132,12 @@ public class AddCourse extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-       
         String courseName = this.nameField.getText();
         String courseLocation = this.locationField.getText();
         String courseTeacher = this.teacherField.getText();
-        
+
         Course course = new Course(courseName, courseLocation, courseTeacher);
         StudentGradebook.courses.add(course);
-        System.out.println(StudentGradebook.courses.get(StudentGradebook.courses.size() - 1));
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked

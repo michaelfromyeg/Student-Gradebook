@@ -127,6 +127,6 @@ public class Course implements java.io.Serializable {
         
         @Override
         public String toString() {
-            return "This course is called:" + this.getCourseName();
+            return "This course is called: " + this.getCourseName();
         }
 }

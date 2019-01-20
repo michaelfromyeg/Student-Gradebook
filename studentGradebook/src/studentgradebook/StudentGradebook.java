@@ -35,32 +35,19 @@ public class StudentGradebook implements java.io.Serializable {
     private static ClassView classView;
     
     public static void updateArray() {
+        
         courseArray = new String[courses.size()][3];
         for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
+         System.out.println(courses.size());
          courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
-         System.out.println(courseArray[i][0] + " ");
+         System.out.print(courseArray[i][0] + " Array ");
          courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
          System.out.print(courseArray[i][1] + " ");         
          courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
-         System.out.print(courseArray[i][2] + " ");         
+         System.out.println(courseArray[i][2] + " ");         
         }
     }
-    
-    
-    public static void createDatabase() {    
-        Course c1 = new Course("Math","Room 123","Mr. Artym");
-        Course c2 = new Course("History","Room 546","Mrs. Usher");
-        Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
-        
-        courses.add(c1);
-        courses.add(c2);
-        courses.add(c3);
-        updateArray();
-        
-    }
-    
-
-    
+     
     public StudentGradebook() {
         gradebook = new GradebookFrame();
         classFrame = new ClassFrame();
@@ -142,7 +129,6 @@ public class StudentGradebook implements java.io.Serializable {
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Course c = new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText());
-                courses.add(c);
                 System.out.println(c.getCourseName());
                 saveCourse(c);
                 classFrame.setVisible(true);

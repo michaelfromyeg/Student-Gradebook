@@ -25,7 +25,7 @@ public class ClassFrame extends javax.swing.JFrame {
     public void setupTable() {
         
 
-        StudentGradebook.createDatabase();
+        StudentGradebook.updateArray();
         String[] colNames = {"Name", "Location", "Teacher"};
         model.setDataVector(StudentGradebook.courseArray, colNames);
 }
@@ -162,10 +162,9 @@ public class ClassFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addClassButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      model = new DefaultTableModel();
+
         setupTable();
-      classTable.setModel(model);
-      jScrollPane1.setViewportView(classTable);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
