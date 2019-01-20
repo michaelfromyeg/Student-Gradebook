@@ -35,7 +35,7 @@ public class AddCourse extends javax.swing.JFrame {
         locationField = new javax.swing.JTextField();
         teacherField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -73,10 +73,10 @@ public class AddCourse extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cancel");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        cancelButton.setText("Cancel");
+        cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                cancelButtonMouseClicked(evt);
             }
         });
 
@@ -88,7 +88,7 @@ public class AddCourse extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -123,7 +123,7 @@ public class AddCourse extends javax.swing.JFrame {
                 .addGap(115, 115, 115)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
-                    .addComponent(jButton1))
+                    .addComponent(cancelButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -142,13 +142,13 @@ public class AddCourse extends javax.swing.JFrame {
        
     }//GEN-LAST:event_addButtonActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
 
         nameField.setText("");
         locationField.setText("");
         teacherField.setText("");
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_cancelButtonMouseClicked
 
     private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
         // TODO add your handling code here:
@@ -159,10 +159,7 @@ public class AddCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_locationFieldActionPerformed
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
-        nameField.setText("");
-        locationField.setText("");
-        teacherField.setText("");
-        this.setVisible(false);
+
     }//GEN-LAST:event_addButtonMouseClicked
 
     /**
@@ -205,7 +202,7 @@ public class AddCourse extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton addButton;
-    public javax.swing.JButton jButton1;
+    public javax.swing.JButton cancelButton;
     public javax.swing.JTextField locationField;
     private javax.swing.JLabel locationLabel;
     public javax.swing.JTextField nameField;
