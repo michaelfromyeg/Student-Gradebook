@@ -138,6 +138,8 @@ public class AddTest extends javax.swing.JFrame {
         Date testDate = df.parse(this.dateField.getText());
         
         Test test = new Test(testName, testScore, testWeight, testCourse, testDate);
+        
+        ClassView.current.tests.add(test);
         }
         
         catch (Exception e) {
