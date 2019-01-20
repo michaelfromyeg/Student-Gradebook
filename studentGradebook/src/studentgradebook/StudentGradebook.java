@@ -33,12 +33,13 @@ public class StudentGradebook {
         Course c1 = new Course("Math","Room 123","Mr. Artym");
         Course c2 = new Course("History","Room 546","Mrs. Usher");
         Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
-        
+        Course c4 = new Course("CompSci", "Room 22", "Mr. Pedersen");
         courses.add(c1);
         courses.add(c2);
         courses.add(c3);
+        courses.add(c4);
         
-        StudentGradebook.courseArray = new String[3][StudentGradebook.courses.size()];
+        StudentGradebook.courseArray = new String[StudentGradebook.courses.size()][3];
         for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
             StudentGradebook.courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
             StudentGradebook.courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
