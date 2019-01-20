@@ -96,11 +96,19 @@ public class StudentGradebook implements java.io.Serializable {
                 classFrame.toFront();
             }
         });
+        //back button on Calc Form --> performance Frame
+        calculatorForm.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                performanceFrame.setVisible(true);
+                performanceFrame.toFront();
+                calculatorForm.setVisible(false);
+            }
+        });
         //calculate test button to Calculator form
         performanceFrame.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                calculatorFrame.setVisible(true);
-                calculatorFrame.toFront();
+                calculatorForm.setVisible(true);
+                calculatorForm.toFront();
                 performanceFrame.setVisible(false);
             }
         });
