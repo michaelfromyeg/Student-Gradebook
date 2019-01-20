@@ -21,6 +21,9 @@ public class StudentGradebook {
     private static ClassFrame classFrame;
     private static ScheduleFrame scheduleFrame;
     private static PerformanceFrame performanceFrame;
+    public static ArrayList<Course> courses = new ArrayList<Course>();
+    public static int coursesNum;
+    public static String[][] courseArray;
     private static AddCourse addCourse;
     private static AddAssignment addAssignment;
     private static AddTest addTest;
@@ -43,7 +46,6 @@ public class StudentGradebook {
         
         StudentGradebook begin = new StudentGradebook();
         
-        ArrayList<Course> courses = new ArrayList<Course>();
         Course c1 = new Course("Math","Room 123","Mr. Artym");
         Course c2 = new Course("History","Room 546","Mrs. Usher");
         Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
@@ -52,6 +54,14 @@ public class StudentGradebook {
         courses.add(c2);
         courses.add(c3);
         
+        courseArray = new String[3][courses.size()];
+        for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
+          courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
+         courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
+         courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
+}
+             
+        System.out.println(courses.size());
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
