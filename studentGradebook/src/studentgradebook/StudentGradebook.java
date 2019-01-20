@@ -20,7 +20,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Michael DeMarco, Jordan Van Den Bruel, and Rajan Maghera
  */
-public class StudentGradebook {
+public class StudentGradebook implements java.io.Serializable {
     public static GradebookFrame gradebook;
     private static ClassFrame classFrame;
     private static ScheduleFrame scheduleFrame;
@@ -49,8 +49,7 @@ public class StudentGradebook {
          courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
          courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
          courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
-}
-        
+        }
     }
     
     public StudentGradebook() {
@@ -125,7 +124,7 @@ public class StudentGradebook {
             }
         });
         //cancel button on addCourse --> classFrame
-        addCourse.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        addCourse.cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
@@ -154,6 +153,10 @@ public class StudentGradebook {
                 //saveCourse(c);
                 classFrame.setVisible(true);
                 classFrame.toFront();
+                addCourse.nameField.setText("");
+                addCourse.locationField.setText("");
+                addCourse.teacherField.setText("");
+                addCourse.setVisible(false);
             }
         });
         //backButton in ClassView --> ClassFrame
@@ -178,11 +181,7 @@ public class StudentGradebook {
 
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
                     File file = fc.getSelectedFile();
-                    try {
-                        importCourse(file);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    //importCourse(file);
                     System.out.println("Opening: " + file.getName() + ".");
                 } else {
                     System.out.println("Open command cancelled by user.");
@@ -206,16 +205,16 @@ public class StudentGradebook {
     }
     
     public static void saveCourse(Course course) {
+        String filepath="..\\tmp\\" + course.getCourseName();
         try {
-            FileOutputStream fileOut =
-            new FileOutputStream("/tmp/" + course.getCourseName() + ".ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(course);
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved in /tmp/" + course.getCourseName() + ".ser");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+              FileOutputStream fileOut = new FileOutputStream(filepath);
+              ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+              objectOut.writeObject(course);
+              objectOut.close();
+              System.out.println("The Object  was succesfully written to a file");
+          } catch (IOException ex) {
+                  ex.printStackTrace();
+          }
+}
+    
  }
