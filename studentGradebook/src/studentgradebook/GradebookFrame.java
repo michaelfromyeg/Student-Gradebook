@@ -21,7 +21,13 @@ public class GradebookFrame extends javax.swing.JFrame {
      * Creates new form GradebookFrame
      */
     public GradebookFrame() {
-        this.quotes = new String[]{"\"Don't let what you cannot do interfere" + System.lineSeparator() + "\nwith what you can do.\" -John Wooden", "\"Successful and unsuccessful people do not vary " + System.lineSeparator() + "\ngreatly in their abilities. They vary in their desires to " + System.lineSeparator() + "\nreach their potential.\" -John Maxwell", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin " + System.lineSeparator() + "\nagain more intelligently.\" -Henry Ford", "\"Our greatest weakness lies in giving up." + System.lineSeparator() + "\nThe most certain way to succeed is " + System.lineSeparator() + "\nalways to try just one more time.\" -Thomas A. Edison", "\"You've got to get up every morning with determination " + System.lineSeparator() + "\nif you're going to go to bed with satisfaction.\" -George Lorimer", "\"Start where you are. " + System.lineSeparator() + "\nUse what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do \nthe common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish " + System.lineSeparator() + "\nyou were better.\" -Jim Rohn"};
+        this.quotes = new String[]{"\"Don't let what you cannot do interfere with what you can do.\" -John Wooden",
+            "\"Strive for progress, not perfection.\" -Unknown",
+            "\"There are no shortcuts to any place worth going.\" -Beverly Sills",
+            "\"Failure is the opportunity to begin again more intelligently.\" -Henry Ford",
+            "\"Start where you are. Use what you have. Do what you can.\" -Arthur Ashe",
+            "\"The secret of success is to do the common things uncommonly well.\" -John D. Rockefeller",
+            "\"Don't wish it were easier; wish you were better.\" -Jim Rohn"};
         initComponents();
         
         this.setLocationRelativeTo(null);
