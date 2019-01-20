@@ -23,7 +23,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Michael DeMarco, Jordan Van Den Bruel, and Rajan Maghera
  */
 
-public class StudentGradebook implements java.io.Serializable {
+public class StudentGradebook {
     private static GradebookFrame gradebook;
     private static ClassFrame classFrame;
     private static PerformanceFrame performanceFrame;
@@ -131,6 +131,27 @@ public class StudentGradebook implements java.io.Serializable {
                 classFrame.refreshTable.doClick();
             }
         });
+        addTest.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
+                try {
+                    Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()), courseChoice, df.parse(addTest.dateField.getText()));
+                    System.out.println(t.getTestName());
+                    saveCourse(courseChoice);
+                } catch (ParseException ex) {
+                    Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                classView.setVisible(true);
+                classView.toFront();
+                addTest.dateField.setText("");
+                addTest.nameField.setText("");
+                addTest.scoreField.setText("");
+                addTest.weightField.setText("");
+                addTest.setVisible(false);
+                updateArrayTests();
+                classView.refreshButton.doClick();    
+            }            
+        }); 
         //backButton in ClassView --> ClassFrame
         classView.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -199,29 +220,7 @@ public class StudentGradebook implements java.io.Serializable {
                 }
                 classFrame.refreshTable.doClick();
             }
-            });
-        addTest.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
-                try {
-                    Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()), courseChoice, df.parse(addTest.dateField.getText()));
-                    System.out.println(t.getTestName());
-                    courseChoice.addTest(t);
-                    saveCourse(courseChoice);
-                } catch (ParseException ex) {
-                    Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                classView.setVisible(true);
-                classView.toFront();
-                addTest.setVisible(false);
-                addTest.dateField.setText("");
-                addTest.nameField.setText("");
-                addTest.scoreField.setText("");
-                addTest.weightField.setText("");
-                updateArrayTests();
-                classView.refreshButton.doClick();    
-            }            
-        });  
+            }); 
     }
     
     public static void updateArray() {
@@ -243,11 +242,12 @@ public class StudentGradebook implements java.io.Serializable {
     }
   
     public static void updateArrayTests() {
-        testArray = new String[courseChoice.tests.size()][3];
+        testArray = new String[courseChoice.tests.size()][4];
         for (int i = 0; i < courseChoice.tests.size(); i ++) {
             testArray[i][0] = courseChoice.tests.get(i).getTestName();
-            testArray[i][1] = courseChoice.tests.get(i).getTestScore() + "";     
-            testArray[i][2] = courseChoice.tests.get(i).getTestWeighting() + "";      
+            testArray[i][1] = courseChoice.tests.get(i).getDate() + "";
+            testArray[i][2] = courseChoice.tests.get(i).getTestScore() + "";     
+            testArray[i][3] = courseChoice.tests.get(i).getTestWeighting() + "";      
         }
     }
     
