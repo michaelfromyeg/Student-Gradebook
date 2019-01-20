@@ -60,6 +60,7 @@ public class GradebookFrame extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Student Gradebook");
         titleLabel.setFocusable(false);
