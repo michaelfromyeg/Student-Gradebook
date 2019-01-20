@@ -64,8 +64,8 @@ public class StudentGradebook {
         courseArray = new String[3][courses.size()];
         for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
           courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
-         courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
-         courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
+          courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
+          courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
 }
              
         System.out.println(courses.size());
@@ -142,11 +142,9 @@ public class StudentGradebook {
         //add button on AddCourse
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-//thinger here
-                courses.add(new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText()));
                 Course c = new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText());
                 courses.add(c);
-                System.out.print(c);
+                System.out.print(c.getCourseName());
                 //saveCourse(c);
                 classFrame.setVisible(true);
                 classFrame.toFront();
