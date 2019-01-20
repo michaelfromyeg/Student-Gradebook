@@ -50,6 +50,11 @@ public class ClassFrame extends javax.swing.JFrame {
                 addClassButtonMouseClicked(evt);
             }
         });
+        addClassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addClassButtonActionPerformed(evt);
+            }
+        });
 
         openClassButton.setText("Open Class");
         openClassButton.setMaximumSize(new java.awt.Dimension(121, 23));
@@ -133,6 +138,10 @@ public class ClassFrame extends javax.swing.JFrame {
            System.out.print("Open command cancelled by user.");
         }
     }//GEN-LAST:event_openClassButtonActionPerformed
+
+    private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addClassButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -53,9 +53,7 @@ public class StudentGradebook {
         courses.add(c2);
         courses.add(c3);
         
-<<<<<<< HEAD
-        //gradebookFrame --> classFrame
-=======
+
         courseArray = new String[3][courses.size()];
         for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
           courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
@@ -64,7 +62,8 @@ public class StudentGradebook {
 }
              
         System.out.println(courses.size());
->>>>>>> dfb697b1879670b8be3eb2d1d249162a8a5c9101
+        
+        //gradebookFrame --> classFrame
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
@@ -85,12 +84,8 @@ public class StudentGradebook {
                 performanceFrame.toFront();
             }
         });
-<<<<<<< HEAD
-        //back button on classFrame --> gradebookFrame
-        classFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-=======
+
         classFrame.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
->>>>>>> dfb697b1879670b8be3eb2d1d249162a8a5c9101
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
@@ -110,12 +105,7 @@ public class StudentGradebook {
                 gradebook.toFront();
             }
         }); 
-<<<<<<< HEAD
-        //classButton on classFrame --> addCourse
-        classFrame.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-=======
         classFrame.addClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
->>>>>>> dfb697b1879670b8be3eb2d1d249162a8a5c9101
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addCourse.setVisible(true);
                 gradebook.toFront();
@@ -152,8 +142,6 @@ public class StudentGradebook {
             }
         });        
     }
-<<<<<<< HEAD
-=======
     
     public static void importCourse(File file) throws ClassNotFoundException {
         
@@ -178,8 +166,5 @@ public class StudentGradebook {
       }
    }
     */
-
- }
->>>>>>> dfb697b1879670b8be3eb2d1d249162a8a5c9101
 
  }
