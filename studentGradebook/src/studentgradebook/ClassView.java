@@ -6,9 +6,11 @@
 package studentgradebook;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +21,31 @@ public class ClassView extends javax.swing.JFrame {
     /**
      * Creates new form GradebookFrame
      */
+    
+    Course current = new Course("sjkl", "sjkl", "sd"); // Replace with " = StudentGradebook.courses.get(i);
+     
+    DefaultTableModel model = new DefaultTableModel();
+    String[][] testArray;
+    
+        public void setupTable() {
+        
+
+        StudentGradebook.updateArray();
+        testArray = new String[current.tests.size()][4];
+        for (int i = 0; i < current.tests.size(); i ++) {
+         testArray[i][0] = current.tests.get(i).getTestName();
+         testArray[i][1] = new SimpleDateFormat("yyyy/MM/dd").format(current.tests.get(i).getDate());     
+         testArray[i][2] = Double.toString(current.tests.get(i).getTestScore());
+         testArray[i][3] = Double.toString(current.tests.get(i).getTestWeighting());
+        }
+        
+        String[] colNames = {"Name", "Date", "Score", "Weight"};
+        model.setDataVector(testArray, colNames);
+}
+    
     public ClassView() {
         initComponents();
+        setupTable();
         this.setLocationRelativeTo(null);        
     }
 
@@ -36,7 +61,7 @@ public class ClassView extends javax.swing.JFrame {
         classesLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        classTable = new javax.swing.JTable();
+        testTable = new javax.swing.JTable();
         addTest = new javax.swing.JButton();
         editTestButton = new javax.swing.JButton();
 
@@ -52,7 +77,8 @@ public class ClassView extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(classTable);
+        testTable.setModel(model);
+        jScrollPane1.setViewportView(testTable);
 
         addTest.setText("Add Test");
         addTest.addActionListener(new java.awt.event.ActionListener() {
@@ -156,5 +182,7 @@ public class ClassView extends javax.swing.JFrame {
     public javax.swing.JLabel classesLabel;
     public javax.swing.JButton editTestButton;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable testTable;
+    public javax.swing.JLabel testsLabel;
     // End of variables declaration//GEN-END:variables
 }
