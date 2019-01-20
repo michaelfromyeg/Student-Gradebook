@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +26,7 @@ public class ClassFrame extends javax.swing.JFrame {
         initComponents();
         StudentGradebook.createDatabase();
         String[] colNames = {"Name", "Location", "Teacher"};
-        model.setDataVector(courseArray, colNames);
+        model.setDataVector(StudentGradebook.courseArray, colNames);
     }
 
     /**
