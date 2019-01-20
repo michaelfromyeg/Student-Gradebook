@@ -43,10 +43,6 @@ public class GradebookFrame extends javax.swing.JFrame {
         datetimeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAutoRequestFocus(false);
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Student Gradebook");
         setMinimumSize(new java.awt.Dimension(1000, 750));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 

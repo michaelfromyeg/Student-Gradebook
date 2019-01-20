@@ -80,7 +80,7 @@ public class StudentGradebook {
                 performanceFrame.toFront();
             }
         });
-        classFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        classFrame.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
@@ -98,7 +98,7 @@ public class StudentGradebook {
                 gradebook.toFront();
             }
         }); 
-        classFrame.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        classFrame.addClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addCourse.setVisible(true);
                 gradebook.toFront();
@@ -124,7 +124,7 @@ public class StudentGradebook {
         });          
     }
     
-    public void importCourse(File file) throws ClassNotFoundException {
+    public static void importCourse(File file) throws ClassNotFoundException {
         
         Course c = null;
         
