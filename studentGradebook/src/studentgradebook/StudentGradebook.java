@@ -47,6 +47,31 @@ public class StudentGradebook {
                 classFrame.setVisible(true);
             }
         });
+        gradebook.scheduleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                scheduleFrame.setVisible(true);
+            }
+        });
+        gradebook.performanceButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                performanceFrame.setVisible(true);
+            }
+        });
+        classFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gradebook.setVisible(true);
+            }
+        });
+        performanceFrame.jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gradebook.setVisible(true);
+            }
+        });
+        scheduleFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gradebook.setVisible(true);
+            }
+        });        
     }
     
     /*

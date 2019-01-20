@@ -44,6 +44,11 @@ public class ClassFrame extends javax.swing.JFrame {
         jButton2.setMinimumSize(new java.awt.Dimension(121, 23));
 
         jButton3.setText("Back");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,6 +82,10 @@ public class ClassFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -117,7 +126,7 @@ public class ClassFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
