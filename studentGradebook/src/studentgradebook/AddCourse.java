@@ -138,9 +138,8 @@ public class AddCourse extends javax.swing.JFrame {
         String courseTeacher = this.teacherField.getText();
         
         Course course = new Course(courseName, courseLocation, courseTeacher);
-        
-        //courses.add
-       
+        StudentGradebook.courses.add(course);
+        System.out.println(StudentGradebook.courses.get(StudentGradebook.courses.size() - 1));
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked

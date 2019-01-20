@@ -162,8 +162,8 @@ public class ClassFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addClassButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      setupTable();
       model = new DefaultTableModel();
+        setupTable();
       classTable.setModel(model);
       jScrollPane1.setViewportView(classTable);
     }//GEN-LAST:event_jButton1ActionPerformed
