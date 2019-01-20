@@ -130,6 +130,27 @@ public class StudentGradebook {
                 classFrame.refreshTable.doClick();
             }
         });
+        addTest.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
+                try {
+                    Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()), courseChoice, df.parse(addTest.dateField.getText()));
+                    System.out.println(t.getTestName());
+                    saveCourse(courseChoice);
+                } catch (ParseException ex) {
+                    Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                classView.setVisible(true);
+                classView.toFront();
+                addTest.dateField.setText("");
+                addTest.nameField.setText("");
+                addTest.scoreField.setText("");
+                addTest.weightField.setText("");
+                addTest.setVisible(false);
+                updateArrayTests();
+                classView.refreshButton.doClick();    
+            }            
+        }); 
         //backButton in ClassView --> ClassFrame
         classView.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -198,28 +219,7 @@ public class StudentGradebook {
                 }
                 classFrame.refreshTable.doClick();
             }
-            });
-        addTest.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
-                try {
-                    Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()), courseChoice, df.parse(addTest.dateField.getText()));
-                    System.out.println(t.getTestName());
-                    saveCourse(courseChoice);
-                } catch (ParseException ex) {
-                    Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                classView.setVisible(true);
-                classView.toFront();
-                addTest.setVisible(false);
-                addTest.dateField.setText("");
-                addTest.nameField.setText("");
-                addTest.scoreField.setText("");
-                addTest.weightField.setText("");
-                updateArrayTests();
-                classView.refreshButton.doClick();    
-            }            
-        });  
+            }); 
     }
     
     public static void updateArray() {
