@@ -226,6 +226,53 @@ public class StudentGradebook {
                 classFrame.refreshTable.doClick();
             }
             }); 
+        
+        //ClassFrame edit/delete
+        
+        classFrame.editClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (classFrame.classTable.getSelectionModel().isSelectionEmpty()) {
+                    System.out.println("No row selected.");
+                    JOptionPane.showMessageDialog(null, "Please select a row!");
+                }
+                else {
+                    int index = findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
+                    courseChoice = courses.get(index);
+
+                    addCourse.nameField.setText(courseChoice.getCourseName());
+                    addCourse.locationField.setText(courseChoice.getLocation() + "");
+                    addCourse.teacherField.setText(courseChoice.getTeacher() + "");
+                    
+                    courses.remove(courses.indexOf(courseChoice));
+                    
+                    addCourse.setVisible(true);
+                    addCourse.toFront();     
+                    classFrame.setVisible(false);
+                }
+            }
+        }); 
+        classFrame.deleteClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (classFrame.classTable.getSelectionModel().isSelectionEmpty()) {
+                    System.out.println("No row selected.");
+                    JOptionPane.showMessageDialog(null, "Please select a row!");
+                }
+                else {
+                    int index = findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
+                    courseChoice = courses.get(index);   
+                    courses.remove(courses.indexOf(courseChoice));
+                    classFrame.refreshTable.doClick();
+                }
+            }
+        }); 
+        
+        
+        
+        
+        //  
+        
+        
+        
         classView.editTestButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classView.testTable.getSelectionModel().isSelectionEmpty()) {
