@@ -7,8 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +25,6 @@ public class StudentGradebook {
     private static GradebookFrame gradebook;
     private static ClassFrame classFrame;
     private static PerformanceFrame performanceFrame;
-    private static int coursesNum;
     private static AddCourse addCourse;
     private static AddTest addTest;
     private static ClassView classView;
@@ -61,6 +58,7 @@ public class StudentGradebook {
         
         //gradebookFrame --> classFrame
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.refreshTable.doClick();
                 classFrame.setVisible(true);
@@ -69,6 +67,7 @@ public class StudentGradebook {
         });
         //gradebookFrame --> performanceFrame
         gradebook.performanceButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 performanceFrame.setVisible(true);
                 performanceFrame.toFront();
@@ -77,6 +76,7 @@ public class StudentGradebook {
         });
 
         classFrame.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(false);
                 gradebook.setVisible(true);
@@ -86,6 +86,7 @@ public class StudentGradebook {
         });
         //back button on performanceFrame --> gradebookFrame
         performanceFrame.jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
@@ -93,6 +94,7 @@ public class StudentGradebook {
             }
         });
         classFrame.addClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addCourse.setVisible(true);
                 gradebook.toFront();
@@ -100,6 +102,7 @@ public class StudentGradebook {
         });
         //cancel button on addCourse --> classFrame
         addCourse.cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
@@ -107,6 +110,7 @@ public class StudentGradebook {
         });
         //back button on Calc Form --> performance Frame
         calculatorForm.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 performanceFrame.setVisible(true);
                 performanceFrame.toFront();
@@ -116,6 +120,7 @@ public class StudentGradebook {
         });
         //calculate test button to Calculator form
         performanceFrame.calcTestButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 calculatorForm.classSelector.removeAllItems();
                 calculatorForm.setVisible(true);
@@ -128,6 +133,7 @@ public class StudentGradebook {
             }
         });
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Course c = new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText());
                 System.out.println(c.getCourseName());
@@ -143,6 +149,7 @@ public class StudentGradebook {
             }
         });
         addTest.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()));
                 System.out.println(t.getTestName());
@@ -161,6 +168,7 @@ public class StudentGradebook {
         }); 
         //backButton in ClassView --> ClassFrame
         classView.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
@@ -168,6 +176,7 @@ public class StudentGradebook {
         });
         //viewClass button in classFrame --> ClassViewFrame
         classFrame.viewClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classFrame.classTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
@@ -187,6 +196,7 @@ public class StudentGradebook {
         });
         //addTest button in viewClass --> addTest
         classView.addTest.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addTest.setVisible(true);
                 addTest.toFront();
@@ -196,6 +206,7 @@ public class StudentGradebook {
         });        
         //viewClass button in classFrame --> ClassViewFrame
         addTest.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classView.setVisible(true);
                 classView.toFront();
@@ -206,6 +217,7 @@ public class StudentGradebook {
             }
         });        
         classFrame.importClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 
                 final JFileChooser fc = new JFileChooser();
@@ -232,6 +244,7 @@ public class StudentGradebook {
         //ClassFrame edit/delete
         
         classFrame.editClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classFrame.classTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
@@ -254,6 +267,7 @@ public class StudentGradebook {
             }
         }); 
         classFrame.deleteClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classFrame.classTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
@@ -278,6 +292,7 @@ public class StudentGradebook {
             }
         }); 
         classView.editTestButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classView.testTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
@@ -302,6 +317,7 @@ public class StudentGradebook {
             }
         }); 
         classView.deleteTest.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classView.testTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
@@ -351,18 +367,15 @@ public class StudentGradebook {
         
     }
     public static void importCourse(File file) throws ClassNotFoundException {
-        Course c = null;
+        Course c;
         try {
-         FileInputStream fileIn = new FileInputStream(file);
-         ObjectInputStream in = new ObjectInputStream(fileIn);
-         c = (Course) in.readObject();
-         System.out.println(c + ". THIS WAS IMPORTED!");
-         System.out.println("Number of tests in imported course: " + c.getTestNum());
-         courses.add(c);
-         in.close();
-         fileIn.close();
+            try (FileInputStream fileIn = new FileInputStream(file); ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                c = (Course) in.readObject();
+                System.out.println(c + ". THIS WAS IMPORTED!");
+                System.out.println("Number of tests in imported course: " + c.getTestNum());
+                courses.add(c);
+            }
         } catch (IOException e) {
-           e.printStackTrace();
         }
     }
     public static void saveCourse(Course course) {     
@@ -381,28 +394,26 @@ public class StudentGradebook {
             tmp.delete();
             try {
                   FileOutputStream fileOut = new FileOutputStream(filepath);
-                  ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-                  objectOut.writeObject(course);
-                  objectOut.flush();
-                  objectOut.close();
+                try (ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
+                    objectOut.writeObject(course);
+                    objectOut.flush();
+                }
                   System.out.println("The object  was succesfully written to a file.");
                   courses.add(course);
                   System.out.println("The course was re-added to courses.");
               } catch (IOException ex) {
-                      ex.printStackTrace();
                     }
         }
         
         else {
             try {
                   FileOutputStream fileOut = new FileOutputStream(filepath);
-                  ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-                  objectOut.writeObject(course);
-                  objectOut.flush();
-                  objectOut.close();
+                try (ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
+                    objectOut.writeObject(course);
+                    objectOut.flush();
+                }
                   System.out.println("The object  was succesfully written to a file.");
               } catch (IOException ex) {
-                      ex.printStackTrace();
               }
         }
     }
