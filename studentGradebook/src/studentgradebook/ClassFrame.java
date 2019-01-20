@@ -5,22 +5,19 @@
  */
 package studentgradebook;
 
-import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author rajan
  */
-public class ClassFrame extends javax.swing.JFrame {
+public final class ClassFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form GradebookFrame
      */
     DefaultTableModel model = new DefaultTableModel() {
+        @Override
         public boolean isCellEditable(int row, int column) {
             return false;
         }
@@ -34,7 +31,6 @@ public class ClassFrame extends javax.swing.JFrame {
     public ClassFrame() {
         initComponents();
         setupTable();
-        
         this.setLocationRelativeTo(null);        
     }
 
@@ -251,10 +247,8 @@ public class ClassFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ClassFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ClassFrame().setVisible(true);
         });
     }
 

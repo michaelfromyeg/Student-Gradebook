@@ -11,12 +11,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author rajan
  */
-public class PerformanceFrame extends javax.swing.JFrame {
+public final class PerformanceFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form GradebookFrame
      */
         DefaultTableModel model = new DefaultTableModel() {
+        @Override
         public boolean isCellEditable(int row, int column) {
             return false;
         }
@@ -166,10 +167,8 @@ public class PerformanceFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PerformanceFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new PerformanceFrame().setVisible(true);
         });
     }
 
