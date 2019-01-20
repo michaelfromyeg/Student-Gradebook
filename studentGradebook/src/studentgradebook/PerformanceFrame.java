@@ -52,11 +52,11 @@ public final class PerformanceFrame extends javax.swing.JFrame {
         refreshButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 500));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Performance");
-        getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jButton1.setText("Test Calculator");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +64,6 @@ public final class PerformanceFrame extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, java.awt.BorderLayout.PAGE_START);
 
         jButton2.setText("Back");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,12 +71,9 @@ public final class PerformanceFrame extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton2, java.awt.BorderLayout.PAGE_END);
 
         jTable1.setModel(model);
         jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         refreshButton.setText("Refresh");
         refreshButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,7 +86,42 @@ public final class PerformanceFrame extends javax.swing.JFrame {
                 refreshButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(refreshButton, java.awt.BorderLayout.LINE_START);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(refreshButton)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(refreshButton)
+                    .addComponent(jButton1))
+                .addGap(24, 24, 24))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
