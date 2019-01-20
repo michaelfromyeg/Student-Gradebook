@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -26,6 +27,27 @@ public class StudentGradebook {
     private static AddCourse addCourse;
     private static AddAssignment addAssignment;
     private static AddTest addTest;
+    
+    public static void createDatabase() {
+        
+        Course c1 = new Course("Math","Room 123","Mr. Artym");
+        Course c2 = new Course("History","Room 546","Mrs. Usher");
+        Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
+        
+        courses.add(c1);
+        courses.add(c2);
+        courses.add(c3);
+        
+        StudentGradebook.courseArray = new String[3][StudentGradebook.courses.size()];
+        for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
+            StudentGradebook.courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
+            StudentGradebook.courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
+            StudentGradebook.courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
+        }       
+        
+        
+        
+    }
     
     public StudentGradebook() {
         gradebook = new GradebookFrame();
@@ -45,25 +67,6 @@ public class StudentGradebook {
         
         StudentGradebook begin = new StudentGradebook();
         
-        Course c1 = new Course("Math","Room 123","Mr. Artym");
-        Course c2 = new Course("History","Room 546","Mrs. Usher");
-        Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
-        
-        courses.add(c1);
-        courses.add(c2);
-        courses.add(c3);
-        
-
-        courseArray = new String[3][courses.size()];
-        for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
-          courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
-         courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
-         courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
-}
-             
-        System.out.println(courses.size());
-        
-        //gradebookFrame --> classFrame
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
