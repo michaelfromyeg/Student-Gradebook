@@ -38,11 +38,11 @@ public class GradebookFrame extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         classButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
         quoteLabel = new javax.swing.JLabel();
         performanceButton = new javax.swing.JButton();
         datetimeLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        averageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Gradebook");
@@ -52,6 +52,8 @@ public class GradebookFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         classButton.setText("View Classes");
+        classButton.setAlignmentX(0.5F);
+        classButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classButtonMouseClicked(evt);
@@ -60,24 +62,24 @@ public class GradebookFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(35, 35, 35, 35);
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
         getContentPane().add(classButton, gridBagConstraints);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Student Gradebook");
+        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLabel.setText("Student Gradebook");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(22, 0, 22, 0);
-        getContentPane().add(jLabel1, gridBagConstraints);
+        getContentPane().add(titleLabel, gridBagConstraints);
 
         quoteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         quoteLabel.setText(quotes[(int)Math.floor(Math.random()*quotes.length)]);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
         getContentPane().add(quoteLabel, gridBagConstraints);
 
@@ -89,9 +91,9 @@ public class GradebookFrame extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(35, 35, 35, 35);
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
         getContentPane().add(performanceButton, gridBagConstraints);
 
         datetimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,17 +101,17 @@ public class GradebookFrame extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(14, 0, 14, 0);
         getContentPane().add(datetimeLabel, gridBagConstraints);
 
-        jLabel2.setText("Current Average: " + StudentGradebook.studentAverage());
+        averageLabel.setText("Current Average: " + StudentGradebook.studentAverage());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(16, 0, 16, 0);
-        getContentPane().add(jLabel2, gridBagConstraints);
+        getContentPane().add(averageLabel, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -159,12 +161,12 @@ public class GradebookFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel averageLabel;
     public javax.swing.JButton classButton;
     private javax.swing.JLabel datetimeLabel;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     public javax.swing.JButton performanceButton;
     private javax.swing.JLabel quoteLabel;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

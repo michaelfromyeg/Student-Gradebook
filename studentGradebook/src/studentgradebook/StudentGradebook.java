@@ -1,7 +1,6 @@
 package studentgradebook;
 
 import com.alee.laf.WebLookAndFeel;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,11 +15,11 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
 /**
  *
  * @author Michael DeMarco, Jordan Van Den Bruel, and Rajan Maghera
  */
+
 public class StudentGradebook implements java.io.Serializable {
     public static GradebookFrame gradebook;
     private static ClassFrame classFrame;
@@ -29,7 +28,6 @@ public class StudentGradebook implements java.io.Serializable {
     public static int coursesNum;
     public static String[][] courseArray;
     private static AddCourse addCourse;
-    private static AddAssignment addAssignment;
     private static AddTest addTest;
     private static ClassView classView;
     
@@ -52,7 +50,6 @@ public class StudentGradebook implements java.io.Serializable {
         classFrame = new ClassFrame();
         performanceFrame = new PerformanceFrame();
         addCourse = new AddCourse();
-        addAssignment = new AddAssignment();
         addTest = new AddTest();
         classView = new ClassView();
         gradebook.setVisible(true);
@@ -197,21 +194,42 @@ public class StudentGradebook implements java.io.Serializable {
     
     public static void saveCourse(Course course) {
         
+        System.out.print(courses.indexOf(course));
+        
         String filename = course.getCourseName() + ".ser";
         String workingDir = System.getProperty("user.dir");
-        String filepath = workingDir+ File.separator + "\\src\\studentgradebook\\tmp\\" + filename;
+        String filepath = workingDir + File.separator + "\\src\\studentgradebook\\tmp\\" + filename;
+        //String filepath = "C:\\Users\\mdema\\Documents\\Github\\studentgradebook\\studentGradebook\\src\\studentgradebook\\tmp\\" + course.getCourseName() + ".ser";
         System.out.println(filepath);
         
-        //String filepath = "C:\\Users\\mdema\\Documents\\Github\\studentgradebook\\studentGradebook\\src\\studentgradebook\\tmp\\" + course.getCourseName() + ".ser";
-        try {
-              FileOutputStream fileOut = new FileOutputStream(filepath);
-              ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-              objectOut.writeObject(course);
-              objectOut.close();
-              System.out.println("The object  was succesfully written to a file.");
-          } catch (IOException ex) {
-                  ex.printStackTrace();
-          }
+        File tmp = new File(filepath);
+        boolean exists = tmp.exists();
+        
+        if (exists) {
+            courses.remove(findIndexbyName(courses, course));
+            tmp.delete();
+            try {
+                  FileOutputStream fileOut = new FileOutputStream(filepath);
+                  ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+                  objectOut.writeObject(course);
+                  objectOut.close();
+                  System.out.println("The object  was succesfully written to a file.");
+              } catch (IOException ex) {
+                      ex.printStackTrace();
+                    }
+        }
+        
+        else {
+            try {
+                  FileOutputStream fileOut = new FileOutputStream(filepath);
+                  ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+                  objectOut.writeObject(course);
+                  objectOut.close();
+                  System.out.println("The object  was succesfully written to a file.");
+              } catch (IOException ex) {
+                      ex.printStackTrace();
+              }
+        }
     }
     
     public static double studentAverage() {
@@ -222,5 +240,13 @@ public class StudentGradebook implements java.io.Serializable {
         }
         return sum / courses.size();
     }
-  
+    
+    public static int findIndexbyName(ArrayList<Course> courses, Course c) {
+        for (int i = 0; i < courses.size(); i++) {
+            if (c.getCourseName().equals(courses.get(i).getCourseName())) {
+                return i;
+            }
+        }
+        return -1;
+    }
  }
