@@ -33,18 +33,18 @@ public class GradebookFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
         classButton = new javax.swing.JButton();
         scheduleButton = new javax.swing.JButton();
-        performanceButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         quoteLabel = new javax.swing.JLabel();
+        performanceButton = new javax.swing.JButton();
         datetimeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Student Gradebook");
+        setMinimumSize(new java.awt.Dimension(1000, 750));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         classButton.setText("View Classes");
         classButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -52,8 +52,14 @@ public class GradebookFrame extends javax.swing.JFrame {
                 classButtonMouseClicked(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(35, 35, 35, 35);
+        getContentPane().add(classButton, gridBagConstraints);
 
         scheduleButton.setText("View Schedule");
+        scheduleButton.setAlignmentX(0.5F);
         scheduleButton.setMaximumSize(new java.awt.Dimension(121, 23));
         scheduleButton.setMinimumSize(new java.awt.Dimension(121, 23));
         scheduleButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,56 +72,51 @@ public class GradebookFrame extends javax.swing.JFrame {
                 scheduleButtonActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(35, 35, 35, 35);
+        getContentPane().add(scheduleButton, gridBagConstraints);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Student Gradebook");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(22, 0, 22, 0);
+        getContentPane().add(jLabel1, gridBagConstraints);
+
+        quoteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        quoteLabel.setText(quotes[(int)Math.floor(Math.random()*quotes.length)]);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
+        getContentPane().add(quoteLabel, gridBagConstraints);
 
         performanceButton.setText("View Performance");
+        performanceButton.setAlignmentX(1.0F);
         performanceButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 performanceButtonMouseClicked(evt);
             }
         });
-
-        quoteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        quoteLabel.setText(quotes[(int)Math.floor(Math.random()*quotes.length)]);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(35, 35, 35, 35);
+        getContentPane().add(performanceButton, gridBagConstraints);
 
         datetimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         datetimeLabel.setText(datetime);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(classButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(scheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(performanceButton)
-                .addGap(35, 35, 35))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(datetimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(quoteLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(datetimeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(classButton)
-                    .addComponent(scheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(performanceButton))
-                .addGap(18, 18, 18)
-                .addComponent(quoteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(14, 0, 14, 0);
+        getContentPane().add(datetimeLabel, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,7 +177,6 @@ public class GradebookFrame extends javax.swing.JFrame {
     public javax.swing.JButton classButton;
     private javax.swing.JLabel datetimeLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     public javax.swing.JButton performanceButton;
     private javax.swing.JLabel quoteLabel;
     public javax.swing.JButton scheduleButton;
