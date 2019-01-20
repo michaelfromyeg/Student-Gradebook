@@ -89,7 +89,9 @@ public class ClassFrame extends javax.swing.JFrame {
             }
         });
 
+        classTable.setAutoCreateRowSorter(true);
         classTable.setModel(model);
+        classTable.setEnabled(false);
         jScrollPane1.setViewportView(classTable);
 
         viewClassButton.setText("View A Class");
