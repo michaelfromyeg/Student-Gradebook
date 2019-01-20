@@ -22,8 +22,6 @@ public class ClassView extends javax.swing.JFrame {
     /**
      * Creates new form GradebookFrame
      */
-    
-    public static Course current = new Course("sjkl", "sjkl", "sd"); // Replace with " = StudentGradebook.courses.get(i);
      
     DefaultTableModel model = new DefaultTableModel() {
         public boolean isCellEditable(int row, int column) {
@@ -33,12 +31,12 @@ public class ClassView extends javax.swing.JFrame {
     String[][] testArray;  
     public void setupTable() {
         StudentGradebook.updateArray();
-        testArray = new String[current.tests.size()][4];
-        for (int i = 0; i < current.tests.size(); i ++) {
-            testArray[i][0] = current.tests.get(i).getTestName();
-            testArray[i][1] = new SimpleDateFormat("yyyy/MM/dd").format(current.tests.get(i).getDate());     
-            testArray[i][2] = Double.toString(current.tests.get(i).getTestScore());
-            testArray[i][3] = Double.toString(current.tests.get(i).getTestWeighting());
+        testArray = new String[StudentGradebook.courseChoice.tests.size()][4];
+        for (int i = 0; i < StudentGradebook.courseChoice.tests.size(); i ++) {
+         testArray[i][0] = StudentGradebook.courseChoice.tests.get(i).getTestName();
+         testArray[i][1] = new SimpleDateFormat("yyyy/MM/dd").format(StudentGradebook.courseChoice.tests.get(i).getDate());     
+         testArray[i][2] = Double.toString(StudentGradebook.courseChoice.tests.get(i).getTestScore());
+         testArray[i][3] = Double.toString(StudentGradebook.courseChoice.tests.get(i).getTestWeighting());
         }
         String[] colNames = {"Name", "Date", "Score", "Weight"};
         model.setDataVector(testArray, colNames);
@@ -59,7 +57,7 @@ public class ClassView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        classesLabel = new javax.swing.JLabel();
+        classLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         testTable = new javax.swing.JTable();
@@ -69,8 +67,8 @@ public class ClassView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        classesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        classesLabel.setText("Classes");
+        classLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        classLabel.setText("Course View");
 
         backButton.setText("Back");
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,7 +89,16 @@ public class ClassView extends javax.swing.JFrame {
 
         editTestButton.setText("Edit Test");
 
-        refreshButton.setText("jButton1");
+        refreshButton.setText("Refresh");
+        refreshButton.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                refreshButtonAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
@@ -103,39 +110,36 @@ public class ClassView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(classesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(backButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(addTest, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(editTestButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(refreshButton)))
-                        .addGap(0, 22, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(163, 163, 163)
+                .addComponent(classLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(223, 223, 223))
+            .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
+                .addComponent(addTest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addComponent(editTestButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(classesLabel)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(addTest)
-                    .addComponent(editTestButton)
-                    .addComponent(refreshButton))
-                .addGap(24, 24, 24))
+                .addGap(9, 9, 9)
+                .addComponent(classLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(addTest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(editTestButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -152,6 +156,10 @@ public class ClassView extends javax.swing.JFrame {
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         setupTable();
     }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void refreshButtonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_refreshButtonAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButtonAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -194,10 +202,10 @@ public class ClassView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton addTest;
     public javax.swing.JButton backButton;
-    public javax.swing.JLabel classesLabel;
+    public javax.swing.JLabel classLabel;
     public javax.swing.JButton editTestButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton refreshButton;
+    public javax.swing.JButton refreshButton;
     private javax.swing.JTable testTable;
     // End of variables declaration//GEN-END:variables
 }

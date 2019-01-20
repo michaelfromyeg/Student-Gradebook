@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
  * @author rajan
  */
 public class AddTest extends javax.swing.JFrame {
-
     /**
      * Creates new form GradebookFrame
      */
@@ -45,6 +44,7 @@ public class AddTest extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 153, 51));
 
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Add Test");
@@ -126,26 +126,6 @@ public class AddTest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-       
-        try {
-        String testName = this.nameField.getText();
-        Double testScore = Double.parseDouble(this.scoreField.getText());
-        Double testWeight = Double.parseDouble(this.weightField.getText());
-        
-        Course testCourse = new Course("1", "1", "1"); // THIS IS A PLACEHOLDER
-        
-        SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
-        Date testDate = df.parse(this.dateField.getText());
-        
-        Test test = new Test(testName, testScore, testWeight, testCourse, testDate);
-        
-        ClassView.current.tests.add(test);
-        }
-        
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error", "Error", JOptionPane.ERROR_MESSAGE); 
-           
-        }
 
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -204,7 +184,7 @@ public class AddTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
+    public javax.swing.JButton addButton;
     public javax.swing.JButton backButton;
     public javax.swing.JTextField dateField;
     private javax.swing.JLabel dateLabel;

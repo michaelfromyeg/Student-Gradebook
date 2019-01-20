@@ -21,7 +21,7 @@ public class GradebookFrame extends javax.swing.JFrame {
      * Creates new form GradebookFrame
      */
     public GradebookFrame() {
-        this.quotes = new String[]{"\"Don't let what you cannot do interfere with what you can do.\" -John Wooden", "\"Successful and unsuccessful people do not vary greatly in their abilities. \nThey vary in their desires to reach their potential.\" -John Maxwell", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin again more intelligently.\" -Henry Ford", "\"Our greatest weakness lies in giving up.\nThe most certain way to succeed is always to try just one more time.\" -Thomas A. Edison", "\"You've got to get up every morning with determination if you're going to go to bed with satisfaction.\" -George Lorimer", "\"Start where you are. Use what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do the common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish you were better.\" -Jim Rohn"};
+        this.quotes = new String[]{"\"Don't let what you cannot do interfere \nwith what you can do.\" -John Wooden", "\"Successful and unsuccessful people do not vary \ngreatly in their abilities. They vary in their desires to\n reach their potential.\" -John Maxwell", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin \nagain more intelligently.\" -Henry Ford", "\"Our greatest weakness lies in giving up.\nThe most certain way to succeed is \nalways to try just one more time.\" -Thomas A. Edison", "\"You've got to get up every morning with determination \nif you're going to go to bed with satisfaction.\" -George Lorimer", "\"Start where you are. \nUse what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do \nthe common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish \nyou were better.\" -Jim Rohn"};
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -34,7 +34,6 @@ public class GradebookFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jDialog1 = new javax.swing.JDialog();
         classButton = new javax.swing.JButton();
@@ -44,76 +43,91 @@ public class GradebookFrame extends javax.swing.JFrame {
         datetimeLabel = new javax.swing.JLabel();
         averageLabel = new javax.swing.JLabel();
 
-        jDialog1.getContentPane().setLayout(new java.awt.BorderLayout());
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Gradebook");
         setLocation(new java.awt.Point(0, 0));
-        setMinimumSize(new java.awt.Dimension(1000, 750));
-        setPreferredSize(new java.awt.Dimension(1000, 750));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setMinimumSize(new java.awt.Dimension(750, 400));
+        setPreferredSize(new java.awt.Dimension(750, 400));
 
         classButton.setText("View Classes");
         classButton.setAlignmentX(0.5F);
-        classButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        classButton.setAutoscrolls(true);
+        classButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classButtonMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
-        getContentPane().add(classButton, gridBagConstraints);
 
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Student Gradebook");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(22, 0, 22, 0);
-        getContentPane().add(titleLabel, gridBagConstraints);
+        titleLabel.setFocusable(false);
+        titleLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         quoteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         quoteLabel.setText(quotes[(int)Math.floor(Math.random()*quotes.length)]);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(9, 0, 9, 0);
-        getContentPane().add(quoteLabel, gridBagConstraints);
+        quoteLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         performanceButton.setText("View Performance");
         performanceButton.setAlignmentX(1.0F);
+        performanceButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         performanceButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 performanceButtonMouseClicked(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
-        getContentPane().add(performanceButton, gridBagConstraints);
+        performanceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                performanceButtonActionPerformed(evt);
+            }
+        });
 
         datetimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         datetimeLabel.setText(datetime);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(14, 0, 14, 0);
-        getContentPane().add(datetimeLabel, gridBagConstraints);
 
+        averageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         averageLabel.setText("Current Average: " + StudentGradebook.studentAverage());
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(16, 0, 16, 0);
-        getContentPane().add(averageLabel, gridBagConstraints);
+        averageLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(quoteLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(datetimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(averageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(classButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(93, 93, 93)
+                .addComponent(performanceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(88, 88, 88))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(209, 209, 209))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(datetimeLabel)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(classButton)
+                    .addComponent(performanceButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(averageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(quoteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -125,6 +139,10 @@ public class GradebookFrame extends javax.swing.JFrame {
     private void performanceButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_performanceButtonMouseClicked
         this.setVisible(false);
     }//GEN-LAST:event_performanceButtonMouseClicked
+
+    private void performanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performanceButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_performanceButtonActionPerformed
 
     /**
      * @param args the command line arguments

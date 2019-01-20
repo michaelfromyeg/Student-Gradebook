@@ -66,7 +66,6 @@ public class Course implements java.io.Serializable {
                 }
         }
  
-        
         public double weightSum() { 
             double weightSum = 0.0;
             
@@ -75,7 +74,6 @@ public class Course implements java.io.Serializable {
             }            
             return weightSum;
         }
-
         
         public double classAverage() {     
             double weightedAvg = 0.0;
