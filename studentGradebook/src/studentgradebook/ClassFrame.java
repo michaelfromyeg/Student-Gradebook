@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +20,13 @@ public class ClassFrame extends javax.swing.JFrame {
     /**
      * Creates new form GradebookFrame
      */
+    DefaultTableModel model = new DefaultTableModel();
     public ClassFrame() {
         initComponents();
+        StudentGradebook.createDatabase();
+        String[] colNames = {"Name", "Location", "Teacher"};
+        model.setDataVector(StudentGradebook.courseArray, colNames);
+        
     }
 
     /**
@@ -73,14 +79,7 @@ public class ClassFrame extends javax.swing.JFrame {
             }
         });
 
-        classTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
+        classTable.setModel(model);
         jScrollPane1.setViewportView(classTable);
 
         viewClassButton.setText("View Class");
