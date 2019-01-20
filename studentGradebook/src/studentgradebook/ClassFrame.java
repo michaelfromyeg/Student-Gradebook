@@ -34,7 +34,7 @@ public class ClassFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         addClassButton = new javax.swing.JButton();
-        openClassButton = new javax.swing.JButton();
+        importClassButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         classTable = new javax.swing.JTable();
@@ -56,12 +56,12 @@ public class ClassFrame extends javax.swing.JFrame {
             }
         });
 
-        openClassButton.setText("Open Class");
-        openClassButton.setMaximumSize(new java.awt.Dimension(121, 23));
-        openClassButton.setMinimumSize(new java.awt.Dimension(121, 23));
-        openClassButton.addActionListener(new java.awt.event.ActionListener() {
+        importClassButton.setText("Import Class");
+        importClassButton.setMaximumSize(new java.awt.Dimension(121, 23));
+        importClassButton.setMinimumSize(new java.awt.Dimension(121, 23));
+        importClassButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openClassButtonActionPerformed(evt);
+                importClassButtonActionPerformed(evt);
             }
         });
 
@@ -92,7 +92,7 @@ public class ClassFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(addClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(openClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(importClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 22, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -106,7 +106,7 @@ public class ClassFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addClassButton)
-                    .addComponent(openClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(importClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backButton))
                 .addGap(24, 24, 24))
         );
@@ -122,22 +122,9 @@ public class ClassFrame extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_addClassButtonMouseClicked
 
-    private void openClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openClassButtonActionPerformed
-
-        final JFileChooser fc = new JFileChooser();
-        int returnVal = fc.showOpenDialog(ClassFrame.this);
+    private void importClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importClassButtonActionPerformed
         
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-           File file = fc.getSelectedFile();
-            try {
-                StudentGradebook.importCourse(file);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ClassFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-           System.out.print("Open command cancelled by user.");
-        }
-    }//GEN-LAST:event_openClassButtonActionPerformed
+    }//GEN-LAST:event_importClassButtonActionPerformed
 
     private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
         // TODO add your handling code here:
@@ -183,8 +170,8 @@ public class ClassFrame extends javax.swing.JFrame {
     public javax.swing.JButton addClassButton;
     public javax.swing.JButton backButton;
     private javax.swing.JTable classTable;
+    public javax.swing.JButton importClassButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton openClassButton;
     // End of variables declaration//GEN-END:variables
 }
