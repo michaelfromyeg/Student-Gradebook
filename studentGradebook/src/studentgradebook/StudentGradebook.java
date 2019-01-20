@@ -35,6 +35,7 @@ public class StudentGradebook {
     
     public static ArrayList<Course> courses = new ArrayList<Course>();
     public static Course courseChoice = new Course("","","");
+    public static Test testChoice = new Test("",0,0);
     public static String[][] courseArray;
     public static String[][] testArray;
     public static String[][] marksArray;
@@ -217,6 +218,47 @@ public class StudentGradebook {
                 classFrame.refreshTable.doClick();
             }
             }); 
+        classView.editTestButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (classView.testTable.getSelectionModel().isSelectionEmpty()) {
+                    System.out.println("No row selected.");
+                    JOptionPane.showMessageDialog(null, "Please select a row!");
+                }
+                else {
+                    String testName = (String) classView.testTable.getValueAt(classView.testTable.getSelectedRow(), 0);
+                    System.out.println(testName);
+                    int index = findTestIndexbyName(courseChoice.tests, testName);
+                    testChoice = courseChoice.tests.get(index);
+                    System.out.println(testChoice);
+                    addTest.nameField.setText(testChoice.getTestName());
+                    addTest.scoreField.setText(testChoice.getTestScore() + "");
+                    addTest.weightField.setText(testChoice.getTestWeighting() + "");
+                    
+                    courseChoice.tests.remove(courseChoice.tests.indexOf(testChoice));
+                    
+                    addTest.setVisible(true);
+                    addTest.toFront();     
+                    classView.setVisible(false);
+                }
+            }
+        }); 
+        classView.deleteTest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (classView.testTable.getSelectionModel().isSelectionEmpty()) {
+                    System.out.println("No row selected.");
+                    JOptionPane.showMessageDialog(null, "Please select a row!");
+                }
+                else {
+                    String testName = (String) classView.testTable.getValueAt(classView.testTable.getSelectedRow(), 0);
+                    System.out.println(testName);
+                    int index = findTestIndexbyName(courseChoice.tests, testName);
+                    testChoice = courseChoice.tests.get(index);
+                    System.out.println(testChoice);
+                    courseChoice.tests.remove(courseChoice.tests.indexOf(testChoice));
+                    classView.refreshButton.doClick();
+                }
+            }
+        }); 
     }
     
     public static void updateArray() {
@@ -323,7 +365,7 @@ public class StudentGradebook {
         return sum / courses.size();
     }
     
-    public static int findIndexbyName(ArrayList<Course> courses, Course c) {
+    public  static int findIndexbyName(ArrayList<Course> courses, Course c) {
         for (int i = 0; i < courses.size(); i++) {
             if (c.getCourseName().equals(courses.get(i).getCourseName())) {
                 return i;
@@ -340,4 +382,14 @@ public class StudentGradebook {
         }
         return -1;
     }
+    
+    public static int findTestIndexbyName(ArrayList<Test> tests, String testName) {
+        for (int i = 0; i < tests.size(); i++) {
+            if (testName.equals(tests.get(i).getTestName())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
  }
