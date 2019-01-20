@@ -65,7 +65,7 @@ public class ClassView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        testsLabel = new javax.swing.JLabel();
+        classesLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         testTable = new javax.swing.JTable();
@@ -74,8 +74,8 @@ public class ClassView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        testsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        testsLabel.setText("Tests");
+        classesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        classesLabel.setText("Classes");
 
         backButton.setText("Back");
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -104,7 +104,7 @@ public class ClassView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(testsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(classesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +122,7 @@ public class ClassView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(testsLabel)
+                .addComponent(classesLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
@@ -185,6 +185,8 @@ public class ClassView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton addTest;
     public javax.swing.JButton backButton;
+    private javax.swing.JTable classTable;
+    public javax.swing.JLabel classesLabel;
     public javax.swing.JButton editTestButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable testTable;

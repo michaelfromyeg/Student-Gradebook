@@ -34,11 +34,9 @@ public class AddTest extends javax.swing.JFrame {
 
         titleLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
-        courseLabel = new javax.swing.JLabel();
         scoreLabel = new javax.swing.JLabel();
         weightLabel = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
-        courseBox = new javax.swing.JComboBox<>();
         scoreField = new javax.swing.JTextField();
         weightField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
@@ -53,18 +51,9 @@ public class AddTest extends javax.swing.JFrame {
 
         nameLabel.setText("Name");
 
-        courseLabel.setText("Course");
-
         scoreLabel.setText("Score");
 
         weightLabel.setText("Weighting");
-
-        courseBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        courseBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseBoxActionPerformed(evt);
-            }
-        });
 
         addButton.setText("Add ");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -89,22 +78,20 @@ public class AddTest extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(weightField)
                     .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nameField)
-                    .addComponent(courseBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(courseLabel, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(weightField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                             .addComponent(weightLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scoreLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scoreField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                            .addComponent(scoreLabel, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scoreField)
+                    .addComponent(dateField))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -117,10 +104,6 @@ public class AddTest extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(courseLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(courseBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(dateLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,7 +115,7 @@ public class AddTest extends javax.swing.JFrame {
                 .addComponent(weightLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(weightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
                     .addComponent(backButton))
@@ -163,10 +146,6 @@ public class AddTest extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_addButtonActionPerformed
-
-    private void courseBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_courseBoxActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
@@ -225,8 +204,6 @@ public class AddTest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     public javax.swing.JButton backButton;
-    private javax.swing.JComboBox<String> courseBox;
-    private javax.swing.JLabel courseLabel;
     public javax.swing.JTextField dateField;
     private javax.swing.JLabel dateLabel;
     public javax.swing.JTextField nameField;
