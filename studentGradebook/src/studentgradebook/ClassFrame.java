@@ -34,6 +34,7 @@ public class ClassFrame extends javax.swing.JFrame {
         initComponents();
         setupTable();
         
+        this.setLocationRelativeTo(null);        
     }
 
     /**
@@ -55,6 +56,7 @@ public class ClassFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 51, 51));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Classes");
