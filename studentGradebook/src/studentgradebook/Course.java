@@ -10,13 +10,13 @@ public class Course implements java.io.Serializable {
 	public String courseName;
 	public String location;
 	public String teacher;
-	public static ArrayList<Test> tests = new ArrayList<Test>();
+	public ArrayList<Test> tests = new ArrayList<>();
         
 	public Course(String courseName, String location, String teacher) {
             this.courseName = courseName;
             this.location = location;
             this.teacher = teacher;
-            Course.tests = new ArrayList<>();
+            this.tests = new ArrayList<>();
 	}
 	
 	public String getCourseName() {
@@ -44,7 +44,7 @@ public class Course implements java.io.Serializable {
 	}
 	
         public void addTest(Test test) {
-            tests.add(test);
+            this.tests.add(test);
         }
         
         public int getTestNum() {

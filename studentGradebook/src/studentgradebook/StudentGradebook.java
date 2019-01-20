@@ -132,17 +132,13 @@ public class StudentGradebook {
         });
         addTest.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
-                try {
-                    Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()), courseChoice, df.parse(addTest.dateField.getText()));
-                    System.out.println(t.getTestName());
-                    saveCourse(courseChoice);
-                } catch (ParseException ex) {
-                    Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()));
+                System.out.println(t.getTestName());
+                StudentGradebook.courseChoice.addTest(t);
+                saveCourse(courseChoice);
+                System.out.println("Number of tests in chosen course: " + courseChoice.getTestNum());
                 classView.setVisible(true);
                 classView.toFront();
-                addTest.dateField.setText("");
                 addTest.nameField.setText("");
                 addTest.scoreField.setText("");
                 addTest.weightField.setText("");
@@ -161,18 +157,19 @@ public class StudentGradebook {
         //viewClass button in classFrame --> ClassViewFrame
         classFrame.viewClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int index = findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
-                if (index >= 0) {
+                if (classFrame.classTable.getSelectionModel().isSelectionEmpty()) {
+                    System.out.println("No row selected.");
+                    JOptionPane.showMessageDialog(null, "Please select a row!");
+                }
+                else {
+                    int index = findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
                     courseChoice = courses.get(index);
                     classView.classLabel.setText(courseChoice.getCourseName());
                     System.out.println(courseChoice);
                     classView.setVisible(true);
+                    classView.refreshButton.doClick();
                     classView.toFront();     
                     classFrame.setVisible(false);
-                }
-                else {
-                    System.out.println("No row selected.");
-                    JOptionPane.showMessageDialog(null, "Please select a row!");
                 }
             }
         });
@@ -191,7 +188,6 @@ public class StudentGradebook {
                 classView.setVisible(true);
                 classView.toFront();
                 addTest.nameField.setText("");
-                addTest.dateField.setText("");
                 addTest.scoreField.setText("");
                 addTest.weightField.setText("");
                 addTest.setVisible(false);
@@ -241,12 +237,11 @@ public class StudentGradebook {
     
     
     public static void updateArrayTests() {
-        testArray = new String[courseChoice.tests.size()][4];
+        testArray = new String[courseChoice.tests.size()][3];
         for (int i = 0; i < courseChoice.tests.size(); i ++) {
             testArray[i][0] = courseChoice.tests.get(i).getTestName();
-            testArray[i][1] = courseChoice.tests.get(i).getDate() + "";
-            testArray[i][2] = courseChoice.tests.get(i).getTestScore() + "";     
-            testArray[i][3] = courseChoice.tests.get(i).getTestWeighting() + "";      
+            testArray[i][1] = courseChoice.tests.get(i).getTestScore() + "";     
+            testArray[i][2] = courseChoice.tests.get(i).getTestWeighting() + "";      
         }
     }
     
@@ -257,6 +252,7 @@ public class StudentGradebook {
          ObjectInputStream in = new ObjectInputStream(fileIn);
          c = (Course) in.readObject();
          System.out.println(c + ". THIS WAS IMPORTED!");
+         System.out.println("Number of tests in imported course: " + c.getTestNum());
          courses.add(c);
          in.close();
          fileIn.close();
@@ -285,6 +281,7 @@ public class StudentGradebook {
                   FileOutputStream fileOut = new FileOutputStream(filepath);
                   ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
                   objectOut.writeObject(course);
+                  objectOut.flush();
                   objectOut.close();
                   System.out.println("The object  was succesfully written to a file.");
                   courses.add(course);
@@ -299,6 +296,7 @@ public class StudentGradebook {
                   FileOutputStream fileOut = new FileOutputStream(filepath);
                   ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
                   objectOut.writeObject(course);
+                  objectOut.flush();
                   objectOut.close();
                   System.out.println("The object  was succesfully written to a file.");
               } catch (IOException ex) {

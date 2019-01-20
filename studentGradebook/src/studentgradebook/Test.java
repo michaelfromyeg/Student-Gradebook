@@ -1,21 +1,15 @@
 package studentgradebook;
 
-import java.util.Date;
-
 public class Test implements java.io.Serializable {
 
 	private String testName;
 	private double testScore;
 	private double testWeighting;
-	private Course course;
-        private Date date;
 	
-	public Test(String testName, double testScore, double testWeighting, Course course, Date date) {
+	public Test(String testName, double testScore, double testWeighting) {
 		this.testName = testName;
 		this.testScore = testScore;
 		this.testWeighting = testWeighting;
-		this.course = course;
-                this.date = date;
 	}
 	
 	public String getTestName() {
@@ -41,22 +35,6 @@ public class Test implements java.io.Serializable {
 	public void setTestWeighting(double newTestWeighting) {
             this.testWeighting = newTestWeighting;
 	}
-	
-	public Course getCourse() {
-            return this.course;
-	}
-	
-	public void setCourse(Course newCourse) {
-            this.course = newCourse;
-	}
-        
-        public Date getDate() {
-            return this.date;
-        }
-        
-        public void setDate(Date newDate) {
-            this.date = newDate;
-        }
         
         @Override
         public String toString() {

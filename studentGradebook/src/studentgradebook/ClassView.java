@@ -31,14 +31,13 @@ public class ClassView extends javax.swing.JFrame {
     String[][] testArray;  
     public void setupTable() {
         StudentGradebook.updateArray();
-        testArray = new String[StudentGradebook.courseChoice.tests.size()][4];
+        testArray = new String[StudentGradebook.courseChoice.tests.size()][3];
         for (int i = 0; i < StudentGradebook.courseChoice.tests.size(); i ++) {
-         testArray[i][0] = StudentGradebook.courseChoice.tests.get(i).getTestName();
-         testArray[i][1] = new SimpleDateFormat("yyyy/MM/dd").format(StudentGradebook.courseChoice.tests.get(i).getDate());     
-         testArray[i][2] = Double.toString(StudentGradebook.courseChoice.tests.get(i).getTestScore());
-         testArray[i][3] = Double.toString(StudentGradebook.courseChoice.tests.get(i).getTestWeighting());
+         testArray[i][0] = StudentGradebook.courseChoice.tests.get(i).getTestName();   
+         testArray[i][1] = Double.toString(StudentGradebook.courseChoice.tests.get(i).getTestScore());
+         testArray[i][2] = Double.toString(StudentGradebook.courseChoice.tests.get(i).getTestWeighting());
         }
-        String[] colNames = {"Name", "Date", "Score", "Weight"};
+        String[] colNames = {"Name", "Score", "Weight"};
         model.setDataVector(testArray, colNames);
     }       
     
@@ -115,15 +114,15 @@ public class ClassView extends javax.swing.JFrame {
                 .addGap(223, 223, 223))
             .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
                 .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(52, 52, 52)
                 .addComponent(addTest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(69, 69, 69)
                 .addComponent(editTestButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(112, 112, 112))
+                .addGap(46, 46, 46))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +130,7 @@ public class ClassView extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addComponent(classLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

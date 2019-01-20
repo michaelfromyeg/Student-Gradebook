@@ -5,8 +5,6 @@
  */
 package studentgradebook;
 
-import java.util.Date;
-
 /**
  *
  * @author rajan
@@ -27,8 +25,8 @@ public class CalculatorForm extends javax.swing.JFrame {
         
         course = new Course("History", "221", "Usher");
         
-        Test test1 = new Test("Napoleon", 90, 1, course, new Date());
-        Test test2 = new Test("French Rev", 80, 1, course, new Date());
+        Test test1 = new Test("Napoleon", 90, 1);
+        Test test2 = new Test("French Rev", 80, 1);
         
         course.addTest(test1);
         course.addTest(test2);
