@@ -117,7 +117,7 @@ public class StudentGradebook implements java.io.Serializable {
                 addCourse.teacherField.setText("");
                 addCourse.setVisible(false);
                 updateArray();
-                
+                classFrame.refreshTable.doClick();
             }
         });
         //backButton in ClassView --> ClassFrame
@@ -175,6 +175,7 @@ public class StudentGradebook implements java.io.Serializable {
                 } else {
                     System.out.println("Open command cancelled by user.");
                 }
+                classFrame.refreshTable.doClick();
             }
             });
     }

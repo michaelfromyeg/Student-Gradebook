@@ -11,14 +11,12 @@ public class Course implements java.io.Serializable {
 	public String location;
 	public String teacher;
 	public static ArrayList<Test> tests = new ArrayList<Test>();
-	public static ArrayList<Assignment> assignments = new ArrayList<Assignment>();
-	
+        
 	public Course(String courseName, String location, String teacher) {
             this.courseName = courseName;
             this.location = location;
             this.teacher = teacher;
             Course.tests = new ArrayList<>();
-            Course.assignments = new ArrayList<>();
 	}
 	
 	public String getCourseName() {
@@ -58,70 +56,24 @@ public class Course implements java.io.Serializable {
                     tests.remove(index);
                 }
         }
+ 
         
-        public void addAssignment(Assignment assign) {
-            assignments.add(assign);
-        }
-        
-        public void deleteAssignment(Assignment assign) {
-            int index = assignments.indexOf(assign);
-                if (index == -1) {
-                    System.out.print("Assignment not found!");
-                }
-                else {
-                    assignments.remove(index);
-                }
-        }
-        
-        public double weightSum() {
-            
+        public double weightSum() { 
             double weightSum = 0.0;
             
             for(int i = 0; i < tests.size(); i++) {
                 weightSum += this.tests.get(i).getTestWeighting() / 100;
-            }
-            
-            for(int i = 0; i < assignments.size(); i++) {
-                weightSum += this.assignments.get(i).getAssignWeighting() / 100;
-            }
-            
+            }            
             return weightSum;
         }
+
         
-        public double weightSumTests() {
-            
-            double weightSum = 0.0;
-            
-            for(int i = 0; i < tests.size(); i++) {
-                weightSum += this.tests.get(i).getTestWeighting() / 100;
-            }
-            
-            return weightSum;
-        }
-        
-        public double weightSumAssignments() {
-            
-            double weightSum = 0.0;
-            
-            for(int i = 0; i < assignments.size(); i++) {
-                weightSum += this.assignments.get(i).getAssignWeighting() / 100;
-            }
-            
-            return weightSum;
-        }
-        
-        public double classAverage() {
-            
+        public double classAverage() {     
             double weightedAvg = 0.0;
             
             for(int i = 0; i < tests.size(); i++) {
                 weightedAvg += (this.tests.get(i).getTestWeighting() / 100) * this.tests.get(i).getTestScore();
             }
-            
-            for(int i = 0; i < assignments.size(); i++) {
-                weightedAvg += (this.assignments.get(i).getAssignWeighting() / 100) * this.assignments.get(i).getAssignScore();
-            }
-            
             return weightedAvg / this.weightSum();
         }
         
