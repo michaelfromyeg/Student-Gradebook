@@ -139,7 +139,7 @@ public class StudentGradebook {
             }
         });
         //cancel button on addTest --> classFrame
-        addTest.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        addTest.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
@@ -168,9 +168,29 @@ public class StudentGradebook {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classView.setVisible(true);
                 classView.toFront();
+                classFrame.setVisible(false);
             }
         });
-        
+        //addTest button in viewClass --> addTest
+        classView.addTest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addTest.setVisible(true);
+                addTest.toFront();
+                classView.setVisible(false);
+            }
+        });        
+        //viewClass button in classFrame --> ClassViewFrame
+        addTest.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classView.setVisible(true);
+                classView.toFront();
+                addTest.nameField.setText("");
+                addTest.dateField.setText("");
+                addTest.scoreField.setText("");
+                addTest.weightField.setText("");
+                addTest.setVisible(false);
+            }
+        });        
         classFrame.importClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 final JFileChooser fc = new JFileChooser();

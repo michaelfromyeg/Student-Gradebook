@@ -43,7 +43,7 @@ public class AddTest extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         dateLabel = new javax.swing.JLabel();
         dateField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -74,7 +74,12 @@ public class AddTest extends javax.swing.JFrame {
 
         dateLabel.setText("Date");
 
-        jButton1.setText("Cancel");
+        backButton.setText("Cancel");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,7 +93,7 @@ public class AddTest extends javax.swing.JFrame {
                     .addComponent(courseBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(courseLabel, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dateLabel, javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +134,7 @@ public class AddTest extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
-                    .addComponent(jButton1))
+                    .addComponent(backButton))
                 .addContainerGap())
         );
 
@@ -161,6 +166,10 @@ public class AddTest extends javax.swing.JFrame {
     private void courseBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_courseBoxActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,17 +223,17 @@ public class AddTest extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    public javax.swing.JButton backButton;
     private javax.swing.JComboBox<String> courseBox;
     private javax.swing.JLabel courseLabel;
-    private javax.swing.JTextField dateField;
+    public javax.swing.JTextField dateField;
     private javax.swing.JLabel dateLabel;
-    public javax.swing.JButton jButton1;
-    private javax.swing.JTextField nameField;
+    public javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JTextField scoreField;
+    public javax.swing.JTextField scoreField;
     private javax.swing.JLabel scoreLabel;
     private javax.swing.JLabel titleLabel;
-    private javax.swing.JTextField weightField;
+    public javax.swing.JTextField weightField;
     private javax.swing.JLabel weightLabel;
     // End of variables declaration//GEN-END:variables
 }
