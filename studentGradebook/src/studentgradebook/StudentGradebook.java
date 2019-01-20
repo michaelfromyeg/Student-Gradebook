@@ -1,7 +1,6 @@
 package studentgradebook;
 
 import com.alee.laf.WebLookAndFeel;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.UIManager;
@@ -48,76 +47,85 @@ public class StudentGradebook {
         courses.add(c2);
         courses.add(c3);
         
+        //gradebookFrame --> classFrame
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
         });
+        //gradebookFrame --> scheduleFrame
         gradebook.scheduleButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 scheduleFrame.setVisible(true);
                 scheduleFrame.toFront();
             }
         });
+        //gradebookFrame --> performanceFrame
         gradebook.performanceButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 performanceFrame.setVisible(true);
                 performanceFrame.toFront();
             }
         });
+        //back button on classFrame --> gradebookFrame
         classFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
             }
         });
+        //back button on performanceFrame --> gradebookFrame
         performanceFrame.jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
             }
         });
+        //back button on scheduleFrame --> gradebookFrame
         scheduleFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
                 gradebook.toFront();
             }
         }); 
+        //classButton on classFrame --> addCourse
         classFrame.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addCourse.setVisible(true);
                 gradebook.toFront();
             }
         });
+        //cancel button on addCourse --> classFrame
         addCourse.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
         });
+        //cancel button on addAssignment --> classFrame
         addAssignment.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
         });
+        //cancel button on addTest --> classFrame
         addTest.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
             }
-        });          
+        });
+        //add button on AddCourse
+        addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                courses.add(new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText()));
+                
+                classFrame.setVisible(true);
+                classFrame.toFront();
+            }
+        });        
     }
-    
-    /*
-       class ClassButtonListener implements MouseListener {
-      public void mouseClicked(MouseEvent e) {
-         classFrame.setVisible(true);
-         gradebook.setVisible(false);
-      }
-   }
-    */
 
  }
-
