@@ -5,6 +5,9 @@
  */
 package studentgradebook;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  *
  * @author rajan
@@ -12,12 +15,13 @@ package studentgradebook;
 public class GradebookFrame extends javax.swing.JFrame {
 
     final String[] quotes;
+    final String datetime = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
     
     /**
      * Creates new form GradebookFrame
      */
     public GradebookFrame() {
-        this.quotes = new String[]{"\"Don't let what you cannot do interfere with what you can do.\" -John Wooden", "\"Successful and unsuccessful people do not vary greatly in their abilities. They vary in their desires to reach their potential.\" -John Maxwell", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin again more intelligently.\" -Henry Ford", "\"Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.\" -Thomas A. Edison", "\"You've got to get up every morning with determination if you're going to go to bed with satisfaction.\" �George Lorimer", "\"Start where you are. Use what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do the common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish you were better.\" -Jim Rohn"};
+        this.quotes = new String[]{"\"Don't let what you cannot do interfere with what you can do.\" -John Wooden", "\"Successful and unsuccessful people do not vary greatly in their abilities. \nThey vary in their desires to reach their potential.\" -John Maxwell", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin again more intelligently.\" -Henry Ford", "\"Our greatest weakness lies in giving up.\nThe most certain way to succeed is always to try just one more time.\" -Thomas A. Edison", "\"You've got to get up every morning with determination if you're going to go to bed with satisfaction.\" -George Lorimer", "\"Start where you are. Use what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do the common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish you were better.\" -Jim Rohn"};
         initComponents();
     }
 
@@ -35,7 +39,7 @@ public class GradebookFrame extends javax.swing.JFrame {
         scheduleButton = new javax.swing.JButton();
         performanceButton = new javax.swing.JButton();
         quoteLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        datetimeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,28 +77,28 @@ public class GradebookFrame extends javax.swing.JFrame {
         quoteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         quoteLabel.setText(quotes[(int)Math.floor(Math.random()*quotes.length)]);
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Time");
+        datetimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        datetimeLabel.setText(datetime);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(quoteLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(classButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(scheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(performanceButton)
                 .addGap(35, 35, 35))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(datetimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quoteLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,15 +106,15 @@ public class GradebookFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addComponent(datetimeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(classButton)
                     .addComponent(scheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(performanceButton))
                 .addGap(18, 18, 18)
-                .addComponent(quoteLabel)
-                .addContainerGap())
+                .addComponent(quoteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -170,6 +174,7 @@ public class GradebookFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton classButton;
+    private javax.swing.JLabel datetimeLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JButton performanceButton;

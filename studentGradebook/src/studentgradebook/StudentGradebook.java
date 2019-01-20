@@ -1,5 +1,6 @@
 package studentgradebook;
 
+import com.alee.laf.WebLookAndFeel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -28,7 +29,10 @@ public class StudentGradebook {
         gradebook.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
+        
+        UIManager.setLookAndFeel ( new WebLookAndFeel () );
+        
         StudentGradebook begin = new StudentGradebook();
         
         ArrayList<Course> courses = new ArrayList<Course>();
