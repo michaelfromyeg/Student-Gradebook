@@ -23,7 +23,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Michael DeMarco, Jordan Van Den Bruel, and Rajan Maghera
  */
 
-public class StudentGradebook implements java.io.Serializable {
+public class StudentGradebook {
     private static GradebookFrame gradebook;
     private static ClassFrame classFrame;
     private static PerformanceFrame performanceFrame;
@@ -205,7 +205,6 @@ public class StudentGradebook implements java.io.Serializable {
                 try {
                     Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()), courseChoice, df.parse(addTest.dateField.getText()));
                     System.out.println(t.getTestName());
-                    courseChoice.addTest(t);
                     saveCourse(courseChoice);
                 } catch (ParseException ex) {
                     Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
@@ -237,18 +236,17 @@ public class StudentGradebook implements java.io.Serializable {
         for (int i = 0; i < courses.size(); i ++) {
             marksArray[i][0] = courses.get(i).getCourseName();
             marksArray[i][1] = Double.toString(courses.get(i).classAverage());
-            
-        }
-        
+        }        
     }
     
     
     public static void updateArrayTests() {
-        testArray = new String[courseChoice.tests.size()][3];
+        testArray = new String[courseChoice.tests.size()][4];
         for (int i = 0; i < courseChoice.tests.size(); i ++) {
             testArray[i][0] = courseChoice.tests.get(i).getTestName();
-            testArray[i][1] = courseChoice.tests.get(i).getTestScore() + "";     
-            testArray[i][2] = courseChoice.tests.get(i).getTestWeighting() + "";      
+            testArray[i][1] = courseChoice.tests.get(i).getDate() + "";
+            testArray[i][2] = courseChoice.tests.get(i).getTestScore() + "";     
+            testArray[i][3] = courseChoice.tests.get(i).getTestWeighting() + "";      
         }
     }
     

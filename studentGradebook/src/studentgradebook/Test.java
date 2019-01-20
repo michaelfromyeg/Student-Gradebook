@@ -2,7 +2,7 @@ package studentgradebook;
 
 import java.util.Date;
 
-public class Test {
+public class Test implements java.io.Serializable {
 
 	private String testName;
 	private double testScore;
