@@ -33,17 +33,7 @@ public class StudentGradebook implements java.io.Serializable {
     private static AddTest addTest;
     private static ClassView classView;
     
-    public static void createDatabase() {
-        
-        Course c1 = new Course("Math","Room 123","Mr. Artym");
-        Course c2 = new Course("History","Room 546","Mrs. Usher");
-        Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
-        
-        courses.add(c1);
-        courses.add(c2);
-        courses.add(c3);
-        
-
+    public static void updateArray() {
         courseArray = new String[3][courses.size()];
         for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
          courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
@@ -51,6 +41,21 @@ public class StudentGradebook implements java.io.Serializable {
          courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
         }
     }
+    
+    
+    public static void createDatabase() {    
+        Course c1 = new Course("Math","Room 123","Mr. Artym");
+        Course c2 = new Course("History","Room 546","Mrs. Usher");
+        Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
+        
+        courses.add(c1);
+        courses.add(c2);
+        courses.add(c3);
+        updateArray();
+        
+    }
+    
+
     
     public StudentGradebook() {
         gradebook = new GradebookFrame();
@@ -157,6 +162,8 @@ public class StudentGradebook implements java.io.Serializable {
                 addCourse.locationField.setText("");
                 addCourse.teacherField.setText("");
                 addCourse.setVisible(false);
+                updateArray();
+                
             }
         });
         //backButton in ClassView --> ClassFrame
