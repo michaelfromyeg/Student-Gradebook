@@ -33,17 +33,7 @@ public class StudentGradebook implements java.io.Serializable {
     private static AddTest addTest;
     private static ClassView classView;
     
-    public static void createDatabase() {
-        
-        Course c1 = new Course("Math","Room 123","Mr. Artym");
-        Course c2 = new Course("History","Room 546","Mrs. Usher");
-        Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
-        
-        courses.add(c1);
-        courses.add(c2);
-        courses.add(c3);
-        
-
+    public static void updateArray() {
         courseArray = new String[3][courses.size()];
         for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
          courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
@@ -51,6 +41,21 @@ public class StudentGradebook implements java.io.Serializable {
          courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
         }
     }
+    
+    
+    public static void createDatabase() {    
+        Course c1 = new Course("Math","Room 123","Mr. Artym");
+        Course c2 = new Course("History","Room 546","Mrs. Usher");
+        Course c3 = new Course("English","Room 435","Mrs. Jacobsen");
+        
+        courses.add(c1);
+        courses.add(c2);
+        courses.add(c3);
+        updateArray();
+        
+    }
+    
+
     
     public StudentGradebook() {
         gradebook = new GradebookFrame();
@@ -130,21 +135,6 @@ public class StudentGradebook implements java.io.Serializable {
                 classFrame.toFront();
             }
         });
-        //cancel button on addAssignment --> classFrame
-        addAssignment.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classFrame.setVisible(true);
-                classFrame.toFront();
-            }
-        });
-        //cancel button on addTest --> classFrame
-        addTest.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classFrame.setVisible(true);
-                classFrame.toFront();
-            }
-        });
-        //add button on AddCourse
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Course c = new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText());
@@ -157,6 +147,8 @@ public class StudentGradebook implements java.io.Serializable {
                 addCourse.locationField.setText("");
                 addCourse.teacherField.setText("");
                 addCourse.setVisible(false);
+                updateArray();
+                
             }
         });
         //backButton in ClassView --> ClassFrame
@@ -171,9 +163,29 @@ public class StudentGradebook implements java.io.Serializable {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classView.setVisible(true);
                 classView.toFront();
+                classFrame.setVisible(false);
             }
         });
-        
+        //addTest button in viewClass --> addTest
+        classView.addTest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addTest.setVisible(true);
+                addTest.toFront();
+                classView.setVisible(false);
+            }
+        });        
+        //viewClass button in classFrame --> ClassViewFrame
+        addTest.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classView.setVisible(true);
+                classView.toFront();
+                addTest.nameField.setText("");
+                addTest.dateField.setText("");
+                addTest.scoreField.setText("");
+                addTest.weightField.setText("");
+                addTest.setVisible(false);
+            }
+        });        
         classFrame.importClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 final JFileChooser fc = new JFileChooser();

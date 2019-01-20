@@ -16,6 +16,7 @@ public class AddCourse extends javax.swing.JFrame {
      */
     public AddCourse() {
         initComponents();
+        this.setLocationRelativeTo(null);        
     }
 
     /**
