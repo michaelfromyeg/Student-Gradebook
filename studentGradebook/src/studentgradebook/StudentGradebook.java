@@ -37,6 +37,7 @@ public class StudentGradebook implements java.io.Serializable {
     public static Course courseChoice = new Course("","","");
     public static String[][] courseArray;
     public static String[][] testArray;
+    public static String[][] marksArray;
      
     public StudentGradebook() {
         gradebook = new GradebookFrame();
@@ -66,6 +67,7 @@ public class StudentGradebook implements java.io.Serializable {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 performanceFrame.setVisible(true);
                 performanceFrame.toFront();
+                performanceFrame.refreshButton.doClick();
             }
         });
 
@@ -102,6 +104,7 @@ public class StudentGradebook implements java.io.Serializable {
                 performanceFrame.setVisible(true);
                 performanceFrame.toFront();
                 calculatorForm.setVisible(false);
+                performanceFrame.refreshButton.doClick();
             }
         });
         //calculate test button to Calculator form
@@ -228,6 +231,17 @@ public class StudentGradebook implements java.io.Serializable {
             courseArray[i][2] = courses.get(i).getTeacher();      
         }
     }
+    
+    public static void updateArrayMarks() {
+        marksArray = new String[courses.size()][2];
+        for (int i = 0; i < courses.size(); i ++) {
+            marksArray[i][0] = courses.get(i).getCourseName();
+            marksArray[i][1] = Double.toString(courses.get(i).classAverage());
+            
+        }
+        
+    }
+    
     
     public static void updateArrayTests() {
         testArray = new String[courseChoice.tests.size()][3];

@@ -201,7 +201,7 @@ public class AddTest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton addButton;
     public javax.swing.JButton backButton;
-    private javax.swing.JTextField dateField;
+    public javax.swing.JTextField dateField;
     private javax.swing.JLabel dateLabel;
     public javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
