@@ -9,24 +9,18 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author rajan
  */
-public class ClassFrame extends javax.swing.JFrame {
+public class ClassView extends javax.swing.JFrame {
 
     /**
      * Creates new form GradebookFrame
      */
-    DefaultTableModel model = new DefaultTableModel();
-    
-    public ClassFrame() {
+    public ClassView() {
         initComponents();
-        StudentGradebook.createDatabase();
-        String[] colNames = {"Name", "Location", "Teacher"};
-        model.setDataVector(StudentGradebook.courseArray, colNames);
     }
 
     /**
@@ -38,39 +32,17 @@ public class ClassFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        addClassButton = new javax.swing.JButton();
-        importClassButton = new javax.swing.JButton();
+        testsAndAssignments = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         classTable = new javax.swing.JTable();
-        viewClassButton = new javax.swing.JButton();
+        addTest = new javax.swing.JButton();
+        editTestButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Classes");
-
-        addClassButton.setText("Add Class");
-        addClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addClassButtonMouseClicked(evt);
-            }
-        });
-        addClassButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addClassButtonActionPerformed(evt);
-            }
-        });
-
-        importClassButton.setText("Import Class");
-        importClassButton.setMaximumSize(new java.awt.Dimension(121, 23));
-        importClassButton.setMinimumSize(new java.awt.Dimension(121, 23));
-        importClassButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                importClassButtonActionPerformed(evt);
-            }
-        });
+        testsAndAssignments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        testsAndAssignments.setText("CLASSNAME - Tests and Assignments");
 
         backButton.setText("Back");
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,10 +51,16 @@ public class ClassFrame extends javax.swing.JFrame {
             }
         });
 
-        classTable.setModel(model);
         jScrollPane1.setViewportView(classTable);
 
-        viewClassButton.setText("View Class");
+        addTest.setText("Add Test");
+        addTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addTestActionPerformed(evt);
+            }
+        });
+
+        editTestButton.setText("Edit Test");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,20 +70,17 @@ public class ClassFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(testsAndAssignments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(backButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(importClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(openClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(viewClassButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(addTest, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(editTestButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 22, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -113,17 +88,14 @@ public class ClassFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(testsAndAssignments)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addClassButton)
-                    .addComponent(importClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backButton))
-                    .addComponent(openClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backButton)
-                    .addComponent(viewClassButton))
+                    .addComponent(addTest)
+                    .addComponent(editTestButton))
                 .addGap(24, 24, 24))
         );
 
@@ -134,17 +106,9 @@ public class ClassFrame extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_backButtonMouseClicked
 
-    private void addClassButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addClassButtonMouseClicked
-        this.setVisible(false);
-    }//GEN-LAST:event_addClassButtonMouseClicked
-
-    private void importClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importClassButtonActionPerformed
-        
-    }//GEN-LAST:event_importClassButtonActionPerformed
-
-    private void addClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassButtonActionPerformed
+    private void addTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addClassButtonActionPerformed
+    }//GEN-LAST:event_addTestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,33 +127,33 @@ public class ClassFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClassFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClassView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClassFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClassView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClassFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClassView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClassFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClassView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClassFrame().setVisible(true);
+                new ClassView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton addClassButton;
+    public javax.swing.JButton addTest;
     public javax.swing.JButton backButton;
     private javax.swing.JTable classTable;
-    public javax.swing.JButton importClassButton;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JButton editTestButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton openClassButton;
-    public javax.swing.JButton viewClassButton;
+    public javax.swing.JLabel testsAndAssignments;
     // End of variables declaration//GEN-END:variables
 }
