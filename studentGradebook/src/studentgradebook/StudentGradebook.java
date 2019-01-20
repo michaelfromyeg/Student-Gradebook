@@ -3,6 +3,10 @@ package studentgradebook;
 import com.alee.laf.WebLookAndFeel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -108,6 +112,21 @@ public class StudentGradebook {
                 classFrame.toFront();
             }
         });          
+    }
+    
+    public void importCourse(File file) throws ClassNotFoundException {
+        
+        Course c = null;
+        
+        try {
+         FileInputStream fileIn = new FileInputStream(file);
+         ObjectInputStream in = new ObjectInputStream(fileIn);
+         c = (Course) in.readObject();
+         in.close();
+         fileIn.close();
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
     }
     
     /*
