@@ -11,12 +11,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author rajan
  */
-public class PerformanceFrame extends javax.swing.JFrame {
+public final class PerformanceFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form GradebookFrame
      */
         DefaultTableModel model = new DefaultTableModel() {
+        @Override
         public boolean isCellEditable(int row, int column) {
             return false;
         }
@@ -44,7 +45,7 @@ public class PerformanceFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        calcTestButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -59,7 +60,7 @@ public class PerformanceFrame extends javax.swing.JFrame {
         jButton1.setText("Test Calculator");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                calcTestButtonActionPerformed(evt);
             }
         });
 
@@ -120,9 +121,9 @@ public class PerformanceFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void calcTestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcTestButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_calcTestButtonActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         this.setVisible(false);
@@ -167,15 +168,13 @@ public class PerformanceFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PerformanceFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new PerformanceFrame().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButton1;
+    public javax.swing.JButton calcTestButton;
     public javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

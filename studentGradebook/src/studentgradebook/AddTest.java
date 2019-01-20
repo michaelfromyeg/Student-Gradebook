@@ -5,13 +5,6 @@
  */
 package studentgradebook;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import static studentgradebook.StudentGradebook.courseChoice;
 
 /**
  *
@@ -177,10 +170,8 @@ public class AddTest extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddTest().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AddTest().setVisible(true);
         });
     }
 

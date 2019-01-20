@@ -21,7 +21,7 @@ public class GradebookFrame extends javax.swing.JFrame {
      * Creates new form GradebookFrame
      */
     public GradebookFrame() {
-        this.quotes = new String[]{"\"Don't let what you cannot do interfere \nwith what you can do.\" -John Wooden", "\"Successful and unsuccessful people do not vary \ngreatly in their abilities. They vary in their desires to\n reach their potential.\" -John Maxwell", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin \nagain more intelligently.\" -Henry Ford", "\"Our greatest weakness lies in giving up.\nThe most certain way to succeed is \nalways to try just one more time.\" -Thomas A. Edison", "\"You've got to get up every morning with determination \nif you're going to go to bed with satisfaction.\" -George Lorimer", "\"Start where you are. \nUse what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do \nthe common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish \nyou were better.\" -Jim Rohn"};
+        this.quotes = new String[]{"\"Don't let what you cannot do interfere" + System.lineSeparator() + "\nwith what you can do.\" -John Wooden", "\"Successful and unsuccessful people do not vary " + System.lineSeparator() + "\ngreatly in their abilities. They vary in their desires to " + System.lineSeparator() + "\nreach their potential.\" -John Maxwell", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin " + System.lineSeparator() + "\nagain more intelligently.\" -Henry Ford", "\"Our greatest weakness lies in giving up." + System.lineSeparator() + "\nThe most certain way to succeed is " + System.lineSeparator() + "\nalways to try just one more time.\" -Thomas A. Edison", "\"You've got to get up every morning with determination " + System.lineSeparator() + "\nif you're going to go to bed with satisfaction.\" -George Lorimer", "\"Start where you are. " + System.lineSeparator() + "\nUse what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do \nthe common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish " + System.lineSeparator() + "\nyou were better.\" -Jim Rohn"};
         initComponents();
         
         this.setLocationRelativeTo(null);
@@ -175,10 +175,8 @@ public class GradebookFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GradebookFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new GradebookFrame().setVisible(true);
         });
     }
 
