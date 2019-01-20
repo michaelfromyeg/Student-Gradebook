@@ -44,7 +44,6 @@ public class ClassFrame extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Classes");
-        getContentPane().add(jLabel1);
 
         addClassButton.setText("Add Class");
         addClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -57,7 +56,6 @@ public class ClassFrame extends javax.swing.JFrame {
                 addClassButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(addClassButton);
 
         importClassButton.setText("Import Class");
         importClassButton.setMaximumSize(new java.awt.Dimension(121, 23));
@@ -67,7 +65,6 @@ public class ClassFrame extends javax.swing.JFrame {
                 importClassButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(importClassButton);
 
         backButton.setText("Back");
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,14 +72,53 @@ public class ClassFrame extends javax.swing.JFrame {
                 backButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(backButton);
 
+        classTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         jScrollPane1.setViewportView(classTable);
 
-        getContentPane().add(jScrollPane1);
-
         viewClassButton.setText("View Class");
-        getContentPane().add(viewClassButton);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(importClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addClassButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(viewClassButton))
+                    .addComponent(backButton))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(importClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewClassButton))
+                .addGap(37, 37, 37)
+                .addComponent(backButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
