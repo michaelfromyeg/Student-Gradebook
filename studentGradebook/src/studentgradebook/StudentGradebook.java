@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.util.Date;
 
 /**
  *
@@ -32,6 +31,7 @@ public class StudentGradebook implements java.io.Serializable {
     private static AddCourse addCourse;
     private static AddTest addTest;
     private static ClassView classView;
+    public static CalculatorForm calculatorForm;
     
     public static ArrayList<Course> courses = new ArrayList<Course>();
     public static Course courseChoice = new Course("","","");
@@ -45,6 +45,7 @@ public class StudentGradebook implements java.io.Serializable {
         addCourse = new AddCourse();
         addTest = new AddTest();
         classView = new ClassView();
+        calculatorForm = new CalculatorForm();
         gradebook.setVisible(true);
     }
 
@@ -93,6 +94,14 @@ public class StudentGradebook implements java.io.Serializable {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
+            }
+        });
+        //calculate test button to Calculator form
+        performanceFrame.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                calculatorFrame.setVisible(true);
+                calculatorFrame.toFront();
+                performanceFrame.setVisible(false);
             }
         });
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
