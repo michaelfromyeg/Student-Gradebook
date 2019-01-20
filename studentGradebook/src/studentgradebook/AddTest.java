@@ -20,6 +20,7 @@ public class AddTest extends javax.swing.JFrame {
      */
     public AddTest() {
         initComponents();
+        this.setLocationRelativeTo(null);        
     }
 
     /**

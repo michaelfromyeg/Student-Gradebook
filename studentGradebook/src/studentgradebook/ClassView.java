@@ -21,6 +21,7 @@ public class ClassView extends javax.swing.JFrame {
      */
     public ClassView() {
         initComponents();
+        this.setLocationRelativeTo(null);        
     }
 
     /**

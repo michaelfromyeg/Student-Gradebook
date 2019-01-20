@@ -26,7 +26,7 @@ public class ClassFrame extends javax.swing.JFrame {
         StudentGradebook.createDatabase();
         String[] colNames = {"Name", "Location", "Teacher"};
         model.setDataVector(StudentGradebook.courseArray, colNames);
-        
+        this.setLocationRelativeTo(null);        
     }
 
     /**
@@ -47,6 +47,7 @@ public class ClassFrame extends javax.swing.JFrame {
         viewClassButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 51, 51));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Classes");

@@ -130,23 +130,6 @@ public class StudentGradebook implements java.io.Serializable {
                 classFrame.toFront();
             }
         });
-        /*//cancel button on addAssignment --> classFrame
-        addAssignment.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classFrame.setVisible(true);
-                classFrame.toFront();
-            }
-        });
-
-        //cancel button on addTest --> classFrame
-        addTest.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classFrame.setVisible(true);
-                classFrame.toFront();
-            }
-        });
-        */
-        //add button on AddCourse
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Course c = new Course(addCourse.nameField.getText(), addCourse.locationField.getText(), addCourse.teacherField.getText());

@@ -16,6 +16,7 @@ public class PerformanceFrame extends javax.swing.JFrame {
      */
     public PerformanceFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);        
     }
 
     /**
