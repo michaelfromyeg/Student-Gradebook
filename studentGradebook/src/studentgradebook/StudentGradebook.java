@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.util.Date;
 
 /**
  *
@@ -25,31 +24,19 @@ import java.util.Date;
  */
 
 public class StudentGradebook implements java.io.Serializable {
-    public static GradebookFrame gradebook;
+    private static GradebookFrame gradebook;
     private static ClassFrame classFrame;
     private static PerformanceFrame performanceFrame;
-    public static ArrayList<Course> courses = new ArrayList<Course>();
-    public static int coursesNum;
-    public static String[][] courseArray;
+    private static int coursesNum;
     private static AddCourse addCourse;
     private static AddTest addTest;
     private static ClassView classView;
-    public static Course courseChoice = new Course("","","");
-    public static boolean testAddCheck = false;
+    public static CalculatorForm calculatorForm;
     
-    public static void updateArray() {
-        
-        courseArray = new String[courses.size()][3];
-        for (int i = 0; i < StudentGradebook.courses.size(); i ++) {
-         System.out.println(courses.size());
-         courseArray[i][0] = StudentGradebook.courses.get(i).getCourseName();
-         System.out.print(courseArray[i][0] + " Array ");
-         courseArray[i][1] = StudentGradebook.courses.get(i).getLocation();
-         System.out.print(courseArray[i][1] + " ");         
-         courseArray[i][2] = StudentGradebook.courses.get(i).getTeacher();
-         System.out.println(courseArray[i][2] + " ");         
-        }
-    }
+    public static ArrayList<Course> courses = new ArrayList<Course>();
+    public static Course courseChoice = new Course("","","");
+    public static String[][] courseArray;
+    public static String[][] testArray;
      
     public StudentGradebook() {
         gradebook = new GradebookFrame();
@@ -58,11 +45,11 @@ public class StudentGradebook implements java.io.Serializable {
         addCourse = new AddCourse();
         addTest = new AddTest();
         classView = new ClassView();
+        calculatorForm = new CalculatorForm();
         gradebook.setVisible(true);
     }
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
-        
         UIManager.setLookAndFeel ( new WebLookAndFeel () );
         StudentGradebook begin = new StudentGradebook();
         System.out.println(courses.size());
@@ -107,6 +94,22 @@ public class StudentGradebook implements java.io.Serializable {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
                 classFrame.toFront();
+            }
+        });
+        //back button on Calc Form --> performance Frame
+        calculatorForm.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                performanceFrame.setVisible(true);
+                performanceFrame.toFront();
+                calculatorForm.setVisible(false);
+            }
+        });
+        //calculate test button to Calculator form
+        performanceFrame.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                calculatorForm.setVisible(true);
+                calculatorForm.toFront();
+                performanceFrame.setVisible(false);
             }
         });
         addCourse.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -198,6 +201,7 @@ public class StudentGradebook implements java.io.Serializable {
                 SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
                 try {
                     Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()), courseChoice, df.parse(addTest.dateField.getText()));
+                    System.out.println(t.getTestName());
                     courseChoice.addTest(t);
                     saveCourse(courseChoice);
                 } catch (ParseException ex) {
@@ -210,8 +214,28 @@ public class StudentGradebook implements java.io.Serializable {
                 addTest.nameField.setText("");
                 addTest.scoreField.setText("");
                 addTest.weightField.setText("");
+                updateArrayTests();
+                classView.refreshButton.doClick();    
             }            
         });  
+    }
+    
+    public static void updateArray() {
+        courseArray = new String[courses.size()][3];
+        for (int i = 0; i < courses.size(); i ++) {
+            courseArray[i][0] = courses.get(i).getCourseName();
+            courseArray[i][1] = courses.get(i).getLocation();     
+            courseArray[i][2] = courses.get(i).getTeacher();      
+        }
+    }
+    
+    public static void updateArrayTests() {
+        testArray = new String[courseChoice.tests.size()][3];
+        for (int i = 0; i < courseChoice.tests.size(); i ++) {
+            testArray[i][0] = courseChoice.tests.get(i).getTestName();
+            testArray[i][1] = courseChoice.tests.get(i).getTestScore() + "";     
+            testArray[i][2] = courseChoice.tests.get(i).getTestWeighting() + "";      
+        }
     }
     
     public static void importCourse(File file) throws ClassNotFoundException {
@@ -220,7 +244,7 @@ public class StudentGradebook implements java.io.Serializable {
          FileInputStream fileIn = new FileInputStream(file);
          ObjectInputStream in = new ObjectInputStream(fileIn);
          c = (Course) in.readObject();
-         System.out.println(c + "THIS WAS IMPORTED!");
+         System.out.println(c + ". THIS WAS IMPORTED!");
          courses.add(c);
          in.close();
          fileIn.close();
@@ -231,7 +255,7 @@ public class StudentGradebook implements java.io.Serializable {
     
     public static void saveCourse(Course course) {
         
-        System.out.print(courses.indexOf(course));
+        System.out.println(courses.indexOf(course));
         
         String filename = course.getCourseName() + ".ser";
         String workingDir = System.getProperty("user.dir");

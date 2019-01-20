@@ -5,9 +5,13 @@
  */
 package studentgradebook;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static studentgradebook.StudentGradebook.courseChoice;
 
 /**
  *
@@ -126,7 +130,18 @@ public class AddTest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-
+        String testName = this.nameField.getText();
+        double testScore = Double.parseDouble(this.scoreField.getText());
+        double testWeighting = Double.parseDouble(this.weightField.getText());
+        SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
+        Date date;
+        try {
+            date = df.parse(this.dateField.getText());
+            Test test = new Test(testName, testScore, testWeighting, courseChoice, date);
+            StudentGradebook.courseChoice.addTest(test);
+        } catch (ParseException ex) {
+            Logger.getLogger(AddTest.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
