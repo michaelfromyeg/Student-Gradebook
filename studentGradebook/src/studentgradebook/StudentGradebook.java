@@ -31,6 +31,7 @@ public class StudentGradebook implements java.io.Serializable {
     private static AddTest addTest;
     private static ClassView classView;
     public Course courseChoice;
+    public static boolean testAddCheck = false;
     
     public static void updateArray() {
         
@@ -177,6 +178,24 @@ public class StudentGradebook implements java.io.Serializable {
                 classFrame.refreshTable.doClick();
             }
             });
+        addTest.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+
+                testAddCheck = true;
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (testAddCheck) {
+                    classView.setVisible(true);
+                    classView.toFront();
+                    addTest.setVisible(false);
+                    testAddCheck = false;
+                    addTest.dateField.setText("");
+                    addTest.nameField.setText("");
+                    addTest.scoreField.setText("");
+                    addTest.weightField.setText("");
+                }
+            }            
+        });  
     }
     
     public static void importCourse(File file) throws ClassNotFoundException {

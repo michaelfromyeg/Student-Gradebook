@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
  * @author rajan
  */
 public class AddTest extends javax.swing.JFrame {
-
     /**
      * Creates new form GradebookFrame
      */
@@ -143,7 +142,7 @@ public class AddTest extends javax.swing.JFrame {
         }
         
         catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error", "Error", JOptionPane.ERROR_MESSAGE); 
+            JOptionPane.showMessageDialog(this, "Error", "Error", JOptionPane.ERROR_MESSAGE);
            
         }
 
@@ -204,7 +203,7 @@ public class AddTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
+    public javax.swing.JButton addButton;
     public javax.swing.JButton backButton;
     public javax.swing.JTextField dateField;
     private javax.swing.JLabel dateLabel;
