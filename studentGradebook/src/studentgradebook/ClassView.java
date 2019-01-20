@@ -24,17 +24,12 @@ public class ClassView extends javax.swing.JFrame {
      */
      
     DefaultTableModel model = new DefaultTableModel() {
-     public boolean isCellEditable(int row, int column)
-    {
-      return false;//This causes all cells to be not editable
-    }   
-    
+        public boolean isCellEditable(int row, int column) {
+            return false;//This causes all cells to be not editable
+        }
     };
-    String[][] testArray;
-    
-        public void setupTable() {
-        
-
+    String[][] testArray;  
+    public void setupTable() {
         StudentGradebook.updateArray();
         testArray = new String[StudentGradebook.courseChoice.tests.size()][4];
         for (int i = 0; i < StudentGradebook.courseChoice.tests.size(); i ++) {
@@ -43,10 +38,9 @@ public class ClassView extends javax.swing.JFrame {
          testArray[i][2] = Double.toString(StudentGradebook.courseChoice.tests.get(i).getTestScore());
          testArray[i][3] = Double.toString(StudentGradebook.courseChoice.tests.get(i).getTestWeighting());
         }
-        
         String[] colNames = {"Name", "Date", "Score", "Weight"};
         model.setDataVector(testArray, colNames);
-}
+    }       
     
     public ClassView() {
         initComponents();

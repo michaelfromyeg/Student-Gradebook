@@ -47,6 +47,15 @@ public class Course implements java.io.Serializable {
             tests.add(test);
         }
         
+        public int getTestNum() {
+            return tests.size();
+            
+        }
+        
+        public Test getTest(int index) {
+            return tests.get(index);
+        }
+        
         public void deleteTest(Test test) {
             int index = tests.indexOf(test);
                 if (index == -1) {
