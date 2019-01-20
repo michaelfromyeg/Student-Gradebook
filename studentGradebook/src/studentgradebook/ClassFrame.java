@@ -5,6 +5,9 @@
  */
 package studentgradebook;
 
+import javax.swing.table.DefaultTableModel;
+import static studentgradebook.StudentGradebook.courseArray;
+
 /**
  *
  * @author rajan
@@ -14,8 +17,13 @@ public class ClassFrame extends javax.swing.JFrame {
     /**
      * Creates new form GradebookFrame
      */
+    DefaultTableModel model = new DefaultTableModel();
+    
     public ClassFrame() {
         initComponents();
+        StudentGradebook.createDatabase();
+        String[] colNames = {"Name", "Location", "Teacher"};
+        model.setDataVector(courseArray, colNames);
     }
 
     /**
@@ -57,6 +65,7 @@ public class ClassFrame extends javax.swing.JFrame {
             }
         });
 
+        classTable.setModel(model);
         jScrollPane1.setViewportView(classTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -78,16 +87,8 @@ public class ClassFrame extends javax.swing.JFrame {
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 22, Short.MAX_VALUE)))
+                        .addGap(0, 12, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jButton3)
-                .addGap(119, 119, 119)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +154,7 @@ public class ClassFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable classTable;
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
