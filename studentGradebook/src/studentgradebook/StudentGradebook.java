@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 /**
@@ -191,7 +192,11 @@ public class StudentGradebook implements java.io.Serializable {
         });        
         classFrame.importClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                
                 final JFileChooser fc = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("Student Gradebook Files", "ser", "serial");
+                fc.setFileFilter(filter);
+                
                 int returnVal = fc.showOpenDialog(null);
 
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
