@@ -148,7 +148,7 @@ public class ClassFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
-        this.setVisible(false);
+
     }//GEN-LAST:event_backButtonMouseClicked
 
     private void addClassButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addClassButtonMouseClicked

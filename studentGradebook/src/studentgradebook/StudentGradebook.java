@@ -79,6 +79,7 @@ public class StudentGradebook implements java.io.Serializable {
 
         classFrame.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classFrame.setVisible(false);
                 gradebook.setVisible(true);
                 gradebook.toFront();
             }
