@@ -18,6 +18,8 @@ public class StudentGradebook {
     private static ScheduleFrame scheduleFrame;
     private static PerformanceFrame performanceFrame;
     private static AddCourse addCourse;
+    private static AddAssignment addAssignment;
+    private static AddTest addTest;
     
     public StudentGradebook() {
         gradebook = new GradebookFrame();
@@ -25,6 +27,8 @@ public class StudentGradebook {
         scheduleFrame = new ScheduleFrame();
         performanceFrame = new PerformanceFrame();
         addCourse = new AddCourse();
+        addAssignment = new AddAssignment();
+        addTest = new AddTest();
         
         gradebook.setVisible(true);
     }
@@ -47,43 +51,63 @@ public class StudentGradebook {
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
+                classFrame.toFront();
             }
         });
         gradebook.scheduleButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 scheduleFrame.setVisible(true);
+                scheduleFrame.toFront();
             }
         });
         gradebook.performanceButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 performanceFrame.setVisible(true);
+                performanceFrame.toFront();
             }
         });
         classFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
+                gradebook.toFront();
             }
         });
         performanceFrame.jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
+                gradebook.toFront();
             }
         });
         scheduleFrame.jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gradebook.setVisible(true);
+                gradebook.toFront();
             }
         }); 
         classFrame.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addCourse.setVisible(true);
+                gradebook.toFront();
             }
         });
         addCourse.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classFrame.setVisible(true);
+                classFrame.toFront();
             }
         });
+        addAssignment.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classFrame.setVisible(true);
+                classFrame.toFront();
+            }
+        });
+        addTest.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                classFrame.setVisible(true);
+                classFrame.toFront();
+            }
+        });          
     }
     
     /*
