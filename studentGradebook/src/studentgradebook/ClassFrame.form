@@ -38,6 +38,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="addClassButton" min="-2" pref="121" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="importClassButton" min="-2" pref="121" max="-2" attributes="0"/>
                               <Component id="openClassButton" min="-2" pref="121" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="viewClassButton" max="32767" attributes="0"/>
@@ -60,7 +61,7 @@
               <EmptySpace pref="42" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addClassButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="openClassButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="importClassButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="backButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="viewClassButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -88,9 +89,9 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="openClassButton">
+    <Component class="javax.swing.JButton" name="importClassButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Open Class"/>
+        <Property name="text" type="java.lang.String" value="Import Class"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[121, 23]"/>
         </Property>
@@ -99,8 +100,11 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openClassButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="importClassButtonActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="backButton">
       <Properties>
