@@ -30,6 +30,7 @@ public class StudentGradebook implements java.io.Serializable {
     private static AddCourse addCourse;
     private static AddTest addTest;
     private static ClassView classView;
+    public Course courseChoice;
     
     public static void updateArray() {
         
@@ -129,7 +130,7 @@ public class StudentGradebook implements java.io.Serializable {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 classView.setVisible(true);
                 classView.toFront();
-                classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0);
+                findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
                 classFrame.setVisible(false);
             }
         });
@@ -245,6 +246,15 @@ public class StudentGradebook implements java.io.Serializable {
     public static int findIndexbyName(ArrayList<Course> courses, Course c) {
         for (int i = 0; i < courses.size(); i++) {
             if (c.getCourseName().equals(courses.get(i).getCourseName())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public static int findIndexbyName(ArrayList<Course> courses, String courseName) {
+        for (int i = 0; i < courses.size(); i++) {
+            if (courseName.equals(courses.get(i).getCourseName())) {
                 return i;
             }
         }
