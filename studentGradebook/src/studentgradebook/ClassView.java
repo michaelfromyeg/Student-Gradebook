@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,7 +25,13 @@ public class ClassView extends javax.swing.JFrame {
     
     Course current = new Course("sjkl", "sjkl", "sd"); // Replace with " = StudentGradebook.courses.get(i);
      
-    DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel model = new DefaultTableModel() {
+     public boolean isCellEditable(int row, int column)
+    {
+      return false;//This causes all cells to be not editable
+    }   
+    
+    };
     String[][] testArray;
     
         public void setupTable() {
