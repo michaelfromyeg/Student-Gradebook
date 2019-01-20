@@ -53,7 +53,7 @@ public class ClassFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         classTable = new javax.swing.JTable();
         viewClassButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        refreshTable = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 51));
@@ -94,10 +94,10 @@ public class ClassFrame extends javax.swing.JFrame {
 
         viewClassButton.setText("View A Class");
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        refreshTable.setText("Refresh Table");
+        refreshTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                refreshTableActionPerformed(evt);
             }
         });
 
@@ -119,7 +119,7 @@ public class ClassFrame extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(backButton)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1))
+                            .addComponent(refreshTable))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -138,7 +138,7 @@ public class ClassFrame extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
-                    .addComponent(jButton1))
+                    .addComponent(refreshTable))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -161,11 +161,11 @@ public class ClassFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addClassButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void refreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTableActionPerformed
 
         setupTable();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_refreshTableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,9 +208,9 @@ public class ClassFrame extends javax.swing.JFrame {
     public javax.swing.JButton backButton;
     private javax.swing.JTable classTable;
     public javax.swing.JButton importClassButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JButton refreshTable;
     public javax.swing.JButton viewClassButton;
     // End of variables declaration//GEN-END:variables
 }
