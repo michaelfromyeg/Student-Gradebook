@@ -7,13 +7,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.util.Date;
 
 /**
  *
@@ -30,7 +34,7 @@ public class StudentGradebook implements java.io.Serializable {
     private static AddCourse addCourse;
     private static AddTest addTest;
     private static ClassView classView;
-    public Course courseChoice;
+    public static Course courseChoice = new Course("","","");
     public static boolean testAddCheck = false;
     
     public static void updateArray() {
@@ -129,10 +133,19 @@ public class StudentGradebook implements java.io.Serializable {
         //viewClass button in classFrame --> ClassViewFrame
         classFrame.viewClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classView.setVisible(true);
-                classView.toFront();
-                findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
-                classFrame.setVisible(false);
+                int index = findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
+                if (index >= 0) {
+                    courseChoice = courses.get(index);
+                    classView.classLabel.setText(courseChoice.getCourseName());
+                    System.out.println(courseChoice);
+                    classView.setVisible(true);
+                    classView.toFront();     
+                    classFrame.setVisible(false);
+                }
+                else {
+                    System.out.println("No row selected.");
+                    JOptionPane.showMessageDialog(null, "Please select a row!");
+                }
             }
         });
         //addTest button in viewClass --> addTest
@@ -140,6 +153,7 @@ public class StudentGradebook implements java.io.Serializable {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addTest.setVisible(true);
                 addTest.toFront();
+                classView.refreshButton.doClick();
                 classView.setVisible(false);
             }
         });        
@@ -179,21 +193,22 @@ public class StudentGradebook implements java.io.Serializable {
             }
             });
         addTest.addButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-
-                testAddCheck = true;
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                if (testAddCheck) {
-                    classView.setVisible(true);
-                    classView.toFront();
-                    addTest.setVisible(false);
-                    testAddCheck = false;
-                    addTest.dateField.setText("");
-                    addTest.nameField.setText("");
-                    addTest.scoreField.setText("");
-                    addTest.weightField.setText("");
+                SimpleDateFormat df = new SimpleDateFormat("MM/DD/YYYY");
+                try {
+                    Test t = new Test(addTest.nameField.getText(), Double.parseDouble(addTest.scoreField.getText()), Double.parseDouble(addTest.weightField.getText()), courseChoice, df.parse(addTest.dateField.getText()));
+                    courseChoice.addTest(t);
+                    saveCourse(courseChoice);
+                } catch (ParseException ex) {
+                    Logger.getLogger(StudentGradebook.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                classView.setVisible(true);
+                classView.toFront();
+                addTest.setVisible(false);
+                addTest.dateField.setText("");
+                addTest.nameField.setText("");
+                addTest.scoreField.setText("");
+                addTest.weightField.setText("");
             }            
         });  
     }
@@ -235,6 +250,8 @@ public class StudentGradebook implements java.io.Serializable {
                   objectOut.writeObject(course);
                   objectOut.close();
                   System.out.println("The object  was succesfully written to a file.");
+                  courses.add(course);
+                  System.out.println("The course was re-added to courses.");
               } catch (IOException ex) {
                       ex.printStackTrace();
                     }
