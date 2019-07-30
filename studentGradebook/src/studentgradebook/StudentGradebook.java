@@ -1,6 +1,6 @@
 package studentgradebook;
 
-import com.alee.laf.WebLookAndFeel;
+//import com.alee.laf.WebLookAndFeel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -59,7 +59,7 @@ public class StudentGradebook {
     }
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
-        UIManager.setLookAndFeel ( new WebLookAndFeel () );
+        //UIManager.setLookAndFeel ( new WebLookAndFeel () );
         StudentGradebook begin = new StudentGradebook();
         System.out.println(courses.size());
         initialImport();
