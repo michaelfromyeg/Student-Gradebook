@@ -14,7 +14,7 @@ It is runnable in IntelliJ; it was originally built in Eclipse, so it should be 
 
 See the app in use below!
 
-![Homepage](./images/homepage)
+![Homepage](./images/homepage.png)
 
 The homepage of the application.
 
