@@ -7,31 +7,65 @@ package studentgradebook;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javax.swing.ImageIcon;
 
 /**
- *
  * @author rajan
  */
 public class GradebookFrame extends javax.swing.JFrame {
-    
+
     final String[] quotes;
     final String datetime = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
-    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel averageLabel;
+    public javax.swing.JButton classButton;
+    public javax.swing.JButton performanceButton;
+    private javax.swing.JLabel datetimeLabel;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel quoteLabel;
+    private javax.swing.JLabel titleLabel;
+
     /**
      * Creates new form GradebookFrame
      */
     public GradebookFrame() {
-        this.quotes = new String[]{"\"Don't let what you cannot do interfere with what you can do.\" -John Wooden",
-            "\"Strive for progress, not perfection.\" -Unknown",
-            "\"There are no shortcuts to any place worth going.\" -Beverly Sills",
-            "\"Failure is the opportunity to begin again more intelligently.\" -Henry Ford",
-            "\"Start where you are. Use what you have. Do what you can.\" -Arthur Ashe",
-            "\"The secret of success is to do the common things uncommonly well.\" -John D. Rockefeller",
-            "\"Don't wish it were easier; wish you were better.\" -Jim Rohn"};
+        this.quotes = new String[]{"\"Don't let what you cannot do interfere with what you can do.\" -John Wooden", "\"Strive for progress, not perfection.\" -Unknown", "\"There are no shortcuts to any place worth going.\" -Beverly Sills", "\"Failure is the opportunity to begin again more intelligently.\" -Henry Ford", "\"Start where you are. Use what you have. Do what you can.\" -Arthur Ashe", "\"The secret of success is to do the common things uncommonly well.\" -John D. Rockefeller", "\"Don't wish it were easier; wish you were better.\" -Jim Rohn"};
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+
+    public static void main(String[] args) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GradebookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GradebookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GradebookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GradebookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> {
+            new GradebookFrame().setVisible(true);
+        });
     }
 
     /**
@@ -74,7 +108,7 @@ public class GradebookFrame extends javax.swing.JFrame {
         titleLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         quoteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        quoteLabel.setText(quotes[(int)Math.floor(Math.random()*quotes.length)]);
+        quoteLabel.setText(quotes[(int) Math.floor(Math.random() * quotes.length)]);
         quoteLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         performanceButton.setText("View Performance");
@@ -100,43 +134,8 @@ public class GradebookFrame extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(quoteLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(datetimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(averageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(classButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(93, 93, 93)
-                .addComponent(performanceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(88, 88, 88))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(209, 209, 209))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addComponent(datetimeLabel)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(classButton)
-                    .addComponent(performanceButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(averageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(quoteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(quoteLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(datetimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(averageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addContainerGap()).addGroup(layout.createSequentialGroup().addGap(111, 111, 111).addComponent(classButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addGap(93, 93, 93).addComponent(performanceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addGap(88, 88, 88)).addGroup(layout.createSequentialGroup().addGap(208, 208, 208).addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addGap(209, 209, 209)));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(26, 26, 26).addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addGap(30, 30, 30).addComponent(datetimeLabel).addGap(29, 29, 29).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(classButton).addComponent(performanceButton)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(averageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(quoteLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE).addContainerGap()));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,48 +151,5 @@ public class GradebookFrame extends javax.swing.JFrame {
     private void performanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performanceButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_performanceButtonActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GradebookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GradebookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GradebookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GradebookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new GradebookFrame().setVisible(true);
-        });
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel averageLabel;
-    public javax.swing.JButton classButton;
-    private javax.swing.JLabel datetimeLabel;
-    private javax.swing.JDialog jDialog1;
-    public javax.swing.JButton performanceButton;
-    private javax.swing.JLabel quoteLabel;
-    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,51 +1,38 @@
 package studentgradebook;
 
 //import com.alee.laf.WebLookAndFeel;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
  * @author Michael DeMarco, Jordan Van Den Bruel, and Rajan Maghera
  */
 
 public class StudentGradebook {
+    public static CalculatorForm calculatorForm;
+    public static ArrayList<Course> courses = new ArrayList<Course>();
+    public static Course courseChoice = new Course("", "", "");
+    public static Test testChoice = new Test("", 0, 0);
+    public static String[][] courseArray;
+    public static String[][] testArray;
+    public static String[][] marksArray;
+    public static String[] courseList;
+    public static String filename = "logo.png";
+    public static String workingDir = System.getProperty("user.dir");
+    public static String filepath = workingDir + File.separator + "\\src\\studentgradebook\\" + filename;
+    public static ImageIcon img = new ImageIcon(filepath);
     private static GradebookFrame gradebook;
     private static ClassFrame classFrame;
     private static PerformanceFrame performanceFrame;
     private static AddCourse addCourse;
     private static AddTest addTest;
     private static ClassView classView;
-    public static CalculatorForm calculatorForm;
-    
-    public static ArrayList<Course> courses = new ArrayList<Course>();
-    public static Course courseChoice = new Course("","","");
-    public static Test testChoice = new Test("",0,0);
-    public static String[][] courseArray;
-    public static String[][] testArray;
-    public static String[][] marksArray;
-    public static String[] courseList;
-    
-    
-    public static String  filename = "logo.png";
-    public static String  workingDir = System.getProperty("user.dir");
-    public static String  filepath = workingDir + File.separator + "\\src\\studentgradebook\\" + filename;
-    
-    public static ImageIcon img = new ImageIcon(filepath);
-     
+
     public StudentGradebook() {
         gradebook = new GradebookFrame();
         classFrame = new ClassFrame();
@@ -70,7 +57,7 @@ public class StudentGradebook {
         addTest.setIconImage(img.getImage());
         classView.setIconImage(img.getImage());
         calculatorForm.setIconImage(img.getImage());
-        
+
         //gradebookFrame --> classFrame
         gradebook.classButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -178,9 +165,9 @@ public class StudentGradebook {
                 addTest.weightField.setText("");
                 addTest.setVisible(false);
                 updateArrayTests();
-                classView.refreshButton.doClick();    
-            }            
-        }); 
+                classView.refreshButton.doClick();
+            }
+        });
         //backButton in ClassView --> ClassFrame
         classView.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -196,15 +183,14 @@ public class StudentGradebook {
                 if (classFrame.classTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
                     JOptionPane.showMessageDialog(null, "Please select a row!");
-                }
-                else {
+                } else {
                     int index = findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
                     courseChoice = courses.get(index);
                     classView.classLabel.setText(courseChoice.getCourseName());
                     System.out.println(courseChoice);
                     classView.setVisible(true);
                     classView.refreshButton.doClick();
-                    classView.toFront();     
+                    classView.toFront();
                     classFrame.setVisible(false);
                 }
             }
@@ -218,7 +204,7 @@ public class StudentGradebook {
                 classView.refreshButton.doClick();
                 classView.setVisible(false);
             }
-        });        
+        });
         //viewClass button in classFrame --> ClassViewFrame
         addTest.backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -230,15 +216,15 @@ public class StudentGradebook {
                 addTest.weightField.setText("");
                 addTest.setVisible(false);
             }
-        });        
+        });
         classFrame.importClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                
+
                 final JFileChooser fc = new JFileChooser();
                 FileNameExtensionFilter filter = new FileNameExtensionFilter("Student Gradebook Files", "ser", "serial");
                 fc.setFileFilter(filter);
-                
+
                 int returnVal = fc.showOpenDialog(null);
 
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -254,44 +240,42 @@ public class StudentGradebook {
                 }
                 classFrame.refreshTable.doClick();
             }
-            }); 
-        
+        });
+
         //ClassFrame edit/delete
-        
+
         classFrame.editClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classFrame.classTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
                     JOptionPane.showMessageDialog(null, "Please select a row!");
-                }
-                else {
+                } else {
                     int index = findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
                     courseChoice = courses.get(index);
 
                     addCourse.nameField.setText(courseChoice.getCourseName());
                     addCourse.locationField.setText(courseChoice.getLocation() + "");
                     addCourse.teacherField.setText(courseChoice.getTeacher() + "");
-                    
-                    courses.remove(courses.indexOf(courseChoice));
-                    
+
+                    courses.remove(courseChoice);
+
                     addCourse.setVisible(true);
-                    addCourse.toFront();     
+                    addCourse.toFront();
                     classFrame.setVisible(false);
                 }
             }
-        }); 
+        });
         classFrame.deleteClassButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classFrame.classTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
                     JOptionPane.showMessageDialog(null, "Please select a row!");
-                }
-                else {
+                } else {
                     int index = findIndexbyName(courses, (String) classFrame.classTable.getValueAt(classFrame.classTable.getSelectedRow(), 0));
-                    courseChoice = courses.get(index);   
-                    
+                    courseChoice = courses.get(index);
+
                     String filename = courseChoice.getCourseName() + ".ser";
                     String workingDir = System.getProperty("user.dir");
                     String filepath = workingDir + File.separator + "\\src\\studentgradebook\\tmp\\" + filename;
@@ -299,21 +283,20 @@ public class StudentGradebook {
                     System.out.println(filepath);
                     File tmp = new File(filepath);
                     tmp.delete();
-                    
-                    courses.remove(courses.indexOf(courseChoice));
+
+                    courses.remove(courseChoice);
                     classFrame.refreshTable.doClick();
-                    
+
                 }
             }
-        }); 
+        });
         classView.editTestButton.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classView.testTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
                     JOptionPane.showMessageDialog(null, "Please select a row!");
-                }
-                else {
+                } else {
                     String testName = (String) classView.testTable.getValueAt(classView.testTable.getSelectedRow(), 0);
                     System.out.println(testName);
                     int index = findTestIndexbyName(courseChoice.tests, testName);
@@ -322,65 +305,69 @@ public class StudentGradebook {
                     addTest.nameField.setText(testChoice.getTestName());
                     addTest.scoreField.setText(testChoice.getTestScore() + "");
                     addTest.weightField.setText(testChoice.getTestWeighting() + "");
-                    
-                    courseChoice.tests.remove(courseChoice.tests.indexOf(testChoice));
-                    
+
+                    courseChoice.tests.remove(testChoice);
+
                     addTest.setVisible(true);
-                    addTest.toFront();     
+                    addTest.toFront();
                     classView.setVisible(false);
                 }
             }
-        }); 
+        });
         classView.deleteTest.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 if (classView.testTable.getSelectionModel().isSelectionEmpty()) {
                     System.out.println("No row selected.");
                     JOptionPane.showMessageDialog(null, "Please select a row!");
-                }
-                else {
+                } else {
                     String testName = (String) classView.testTable.getValueAt(classView.testTable.getSelectedRow(), 0);
                     System.out.println(testName);
                     int index = findTestIndexbyName(courseChoice.tests, testName);
                     testChoice = courseChoice.tests.get(index);
                     System.out.println(testChoice);
-                    courseChoice.tests.remove(courseChoice.tests.indexOf(testChoice));
+                    courseChoice.tests.remove(testChoice);
                     classView.refreshButton.doClick();
                 }
             }
-        }); 
+        });
     }
+
     public static void updateArray() {
         courseArray = new String[courses.size()][3];
-        for (int i = 0; i < courses.size(); i ++) {
+        for (int i = 0; i < courses.size(); i++) {
             courseArray[i][0] = courses.get(i).getCourseName();
-            courseArray[i][1] = courses.get(i).getLocation();     
-            courseArray[i][2] = courses.get(i).getTeacher();      
+            courseArray[i][1] = courses.get(i).getLocation();
+            courseArray[i][2] = courses.get(i).getTeacher();
         }
     }
+
     public static void updateArrayMarks() {
         marksArray = new String[courses.size()][2];
-        for (int i = 0; i < courses.size(); i ++) {
+        for (int i = 0; i < courses.size(); i++) {
             marksArray[i][0] = courses.get(i).getCourseName();
             marksArray[i][1] = Double.toString(courses.get(i).classAverage());
-            
+
         }
     }
+
     public static void updateArrayTests() {
         testArray = new String[courseChoice.tests.size()][3];
-        for (int i = 0; i < courseChoice.tests.size(); i ++) {
+        for (int i = 0; i < courseChoice.tests.size(); i++) {
             testArray[i][0] = courseChoice.tests.get(i).getTestName();
-            testArray[i][1] = courseChoice.tests.get(i).getTestScore() + "";     
-            testArray[i][2] = courseChoice.tests.get(i).getTestWeighting() + "";      
+            testArray[i][1] = courseChoice.tests.get(i).getTestScore() + "";
+            testArray[i][2] = courseChoice.tests.get(i).getTestWeighting() + "";
         }
-    }   
+    }
+
     public static void updateArrayCourseList() {
         courseList = new String[courses.size()];
-        for (int i = 0; i < courses.size(); i ++) {
+        for (int i = 0; i < courses.size(); i++) {
             courseList[i] = courses.get(i).getCourseName();
-        }    
-        
+        }
+
     }
+
     public static void importCourse(File file) throws ClassNotFoundException {
         Course c;
         try {
@@ -393,56 +380,55 @@ public class StudentGradebook {
         } catch (IOException e) {
         }
     }
-    public static void saveCourse(Course course) {     
+
+    public static void saveCourse(Course course) {
         System.out.println(courses.indexOf(course));
         String filename = course.getCourseName() + ".ser";
         String workingDir = System.getProperty("user.dir");
         String filepath = workingDir + File.separator + "\\src\\studentgradebook\\tmp\\" + filename;
         //String filepath = "C:\\Users\\mdema\\Documents\\Github\\studentgradebook\\studentGradebook\\src\\studentgradebook\\tmp\\" + course.getCourseName() + ".ser";
         System.out.println(filepath);
-        
+
         File tmp = new File(filepath);
         boolean exists = tmp.exists();
-        
+
         if (exists) {
             courses.remove(findIndexbyName(courses, course));
             tmp.delete();
             try {
-                  FileOutputStream fileOut = new FileOutputStream(filepath);
+                FileOutputStream fileOut = new FileOutputStream(filepath);
                 try (ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
                     objectOut.writeObject(course);
                     objectOut.flush();
                 }
-                  System.out.println("The object  was succesfully written to a file.");
-                  courses.add(course);
-                  System.out.println("The course was re-added to courses.");
-              } catch (IOException ex) {
-                    }
-        }
-        
-        else {
+                System.out.println("The object  was succesfully written to a file.");
+                courses.add(course);
+                System.out.println("The course was re-added to courses.");
+            } catch (IOException ex) {
+            }
+        } else {
             try {
-                  FileOutputStream fileOut = new FileOutputStream(filepath);
+                FileOutputStream fileOut = new FileOutputStream(filepath);
                 try (ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
                     objectOut.writeObject(course);
                     objectOut.flush();
                 }
-                  System.out.println("The object  was succesfully written to a file.");
-              } catch (IOException ex) {
-              }
+                System.out.println("The object  was succesfully written to a file.");
+            } catch (IOException ex) {
+            }
         }
     }
-    
+
     public static double studentAverage() {
-        
+
         double sum = 0.0;
         for (int i = 0; i < courses.size(); i++) {
             sum += courses.get(i).classAverage();
         }
         return sum / courses.size();
     }
-    
-    public  static int findIndexbyName(ArrayList<Course> courses, Course c) {
+
+    public static int findIndexbyName(ArrayList<Course> courses, Course c) {
         for (int i = 0; i < courses.size(); i++) {
             if (c.getCourseName().equals(courses.get(i).getCourseName())) {
                 return i;
@@ -450,7 +436,7 @@ public class StudentGradebook {
         }
         return -1;
     }
-    
+
     public static int findIndexbyName(ArrayList<Course> courses, String courseName) {
         for (int i = 0; i < courses.size(); i++) {
             if (courseName.equals(courses.get(i).getCourseName())) {
@@ -459,7 +445,7 @@ public class StudentGradebook {
         }
         return -1;
     }
-    
+
     public static int findTestIndexbyName(ArrayList<Test> tests, String testName) {
         for (int i = 0; i < tests.size(); i++) {
             if (testName.equals(tests.get(i).getTestName())) {
@@ -468,6 +454,7 @@ public class StudentGradebook {
         }
         return -1;
     }
+
     public static void initialImport() {
         String workingDir = System.getProperty("user.dir");
         String filepath = workingDir + File.separator + "\\src\\studentgradebook\\tmp\\";
@@ -476,7 +463,10 @@ public class StudentGradebook {
 
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                System.out.println(file.getName());
+                if (file.getName().equals(".gitkeep")) {
+                    continue;
+                }
+                System.out.println("Trying to import file " + file.getName());
                 try {
                     importCourse(file);
                 } catch (ClassNotFoundException ex) {
@@ -485,6 +475,4 @@ public class StudentGradebook {
             }
         }
     }
-    
-    
- }
+}
